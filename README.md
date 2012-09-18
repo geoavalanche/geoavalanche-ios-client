@@ -1,4 +1,4 @@
 GeoAvalanche client
 ===================
 
-Mobile client for geoavalanche crowdmapping platform
+Mobile client for GeoAvalanche crowdmapping platform
