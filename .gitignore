@@ -1,0 +1,14 @@
+.*
+*~
+build
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.perspectivev3
+*.mobileprovision
+*.cer
+*~.nib
+*.swp
+.DS_Store
+*.xcuserdatad
+xcuserdata
