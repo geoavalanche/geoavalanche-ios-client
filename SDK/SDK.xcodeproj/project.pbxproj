@@ -324,8 +324,6 @@
 		3EDE88CF15A12C3C00FB30BD /* USHCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE88CD15A12C3C00FB30BD /* USHCheckin.m */; };
 		3EDE88D215A12C3C00FB30BD /* USHComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88D015A12C3C00FB30BD /* USHComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EDE88D315A12C3C00FB30BD /* USHComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE88D115A12C3C00FB30BD /* USHComment.m */; };
-		3EDE88D615A12C3C00FB30BD /* USHCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88D415A12C3C00FB30BD /* USHCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EDE88D715A12C3C00FB30BD /* USHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE88D515A12C3C00FB30BD /* USHCategory.m */; };
 		3EDE88DA15A12C3C00FB30BD /* USHUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88D815A12C3C00FB30BD /* USHUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EDE88DB15A12C3C00FB30BD /* USHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE88D915A12C3C00FB30BD /* USHUser.m */; };
 		3EDE88DE15A12C3C00FB30BD /* USHPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88DC15A12C3C00FB30BD /* USHPhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -335,7 +333,6 @@
 		3EDE88E415A12C9E00FB30BD /* USHReport.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88E015A12C3D00FB30BD /* USHReport.h */; };
 		3EDE88E515A12C9E00FB30BD /* USHPhoto.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88DC15A12C3C00FB30BD /* USHPhoto.h */; };
 		3EDE88E615A12C9E00FB30BD /* USHUser.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88D815A12C3C00FB30BD /* USHUser.h */; };
-		3EDE88E715A12C9E00FB30BD /* USHCategory.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88D415A12C3C00FB30BD /* USHCategory.h */; };
 		3EDE88E815A12C9E00FB30BD /* USHComment.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88D015A12C3C00FB30BD /* USHComment.h */; };
 		3EDE88E915A12C9E00FB30BD /* USHCheckin.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88CC15A12C3C00FB30BD /* USHCheckin.h */; };
 		3EDE88EA15A12C9E00FB30BD /* USHSound.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EDE88C815A12C3C00FB30BD /* USHSound.h */; };
@@ -360,6 +357,33 @@
 		3EFF5AC0162097D20072FAE1 /* UITableView+USH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF5ABE162097D20072FAE1 /* UITableView+USH.m */; };
 		3EFF5AC31620BB4C0072FAE1 /* NSBundle+USH.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3E022E0715ECC4ED00FDDC9E /* NSBundle+USH.h */; };
 		3EFF5AC41620BB4C0072FAE1 /* UITableView+USH.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3EFF5ABD162097D20072FAE1 /* UITableView+USH.h */; };
+		4A68C23C16E691190023631D /* MDTreeAddNodestore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A68C23A16E691190023631D /* MDTreeAddNodestore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A68C23D16E691190023631D /* MDTreeAddNodeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A68C23B16E691190023631D /* MDTreeAddNodeStore.m */; };
+		4A68C23F16E691250023631D /* MDTreeAddNodestore.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 4A68C23A16E691190023631D /* MDTreeAddNodestore.h */; };
+		4A97406616DD3CCA00167D16 /* button_minus_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406216DD3CCA00167D16 /* button_minus_blue.png */; };
+		4A97406716DD3CCA00167D16 /* button_minus_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406216DD3CCA00167D16 /* button_minus_blue.png */; };
+		4A97406816DD3CCA00167D16 /* button_plus_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406316DD3CCA00167D16 /* button_plus_blue.png */; };
+		4A97406916DD3CCA00167D16 /* button_plus_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406316DD3CCA00167D16 /* button_plus_blue.png */; };
+		4A97406A16DD3CCA00167D16 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406416DD3CCA00167D16 /* checkbox_checked.png */; };
+		4A97406B16DD3CCA00167D16 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406416DD3CCA00167D16 /* checkbox_checked.png */; };
+		4A97406C16DD3CCA00167D16 /* checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406516DD3CCA00167D16 /* checkbox_unchecked.png */; };
+		4A97406D16DD3CCA00167D16 /* checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A97406516DD3CCA00167D16 /* checkbox_unchecked.png */; };
+		4A97407116DD3D8600167D16 /* MDTreeNodestore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A97406F16DD3D8600167D16 /* MDTreeNodestore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A97407216DD3D8600167D16 /* MDTreeNodestore.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 4A97406F16DD3D8600167D16 /* MDTreeNodestore.h */; };
+		4A97407316DD3D8600167D16 /* MDTreeNodeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A97407016DD3D8600167D16 /* MDTreeNodeStore.m */; };
+		4A97407916DD3DC700167D16 /* CategoryTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A97407516DD3DC700167D16 /* CategoryTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A97407B16DD3DC700167D16 /* CategoryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A97407616DD3DC700167D16 /* CategoryTree.m */; };
+		4A97407D16DD3DC700167D16 /* CategoryTreeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A97407716DD3DC700167D16 /* CategoryTreeManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A97407F16DD3DC700167D16 /* CategoryTreeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A97407816DD3DC700167D16 /* CategoryTreeManager.m */; };
+		4A97408316DD3E5600167D16 /* MDTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A97408116DD3E5600167D16 /* MDTreeNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A97408416DD3E5600167D16 /* MDTreeNode.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 4A97408116DD3E5600167D16 /* MDTreeNode.h */; };
+		4A97408516DD3E5600167D16 /* MDTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A97408216DD3E5600167D16 /* MDTreeNode.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4A97409216DD42A800167D16 /* CategoryTree.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 4A97407516DD3DC700167D16 /* CategoryTree.h */; };
+		4A97409316DD42AD00167D16 /* CategoryTreeManager.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 4A97407716DD3DC700167D16 /* CategoryTreeManager.h */; };
+		4A97409416DD434500167D16 /* USHDatabase.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3E971B3515A37D08005EB625 /* USHDatabase.h */; };
+		4AACFF4B16DD57CB0097ADFF /* USHCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AACFF4916DD57CB0097ADFF /* USHCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4AACFF4C16DD57CB0097ADFF /* USHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AACFF4A16DD57CB0097ADFF /* USHCategory.m */; };
+		4AACFF4D16DD57D00097ADFF /* USHCategory.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 4AACFF4916DD57CB0097ADFF /* USHCategory.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -463,7 +487,6 @@
 				3EDE88E415A12C9E00FB30BD /* USHReport.h in Copy Headers */,
 				3EDE88E515A12C9E00FB30BD /* USHPhoto.h in Copy Headers */,
 				3EDE88E615A12C9E00FB30BD /* USHUser.h in Copy Headers */,
-				3EDE88E715A12C9E00FB30BD /* USHCategory.h in Copy Headers */,
 				3EDE88E815A12C9E00FB30BD /* USHComment.h in Copy Headers */,
 				3EDE88E915A12C9E00FB30BD /* USHCheckin.h in Copy Headers */,
 				3EDE88EA15A12C9E00FB30BD /* USHSound.h in Copy Headers */,
@@ -472,6 +495,13 @@
 				3EDE88ED15A12C9E00FB30BD /* USHMap.h in Copy Headers */,
 				3EDE88EE15A12C9E00FB30BD /* USHLocation.h in Copy Headers */,
 				3EA23627159B91460072A60D /* Ushahidi.h in Copy Headers */,
+				4A97407216DD3D8600167D16 /* MDTreeNodestore.h in Copy Headers */,
+				4A97408416DD3E5600167D16 /* MDTreeNode.h in Copy Headers */,
+				4A97409216DD42A800167D16 /* CategoryTree.h in Copy Headers */,
+				4A97409316DD42AD00167D16 /* CategoryTreeManager.h in Copy Headers */,
+				4A97409416DD434500167D16 /* USHDatabase.h in Copy Headers */,
+				4AACFF4D16DD57D00097ADFF /* USHCategory.h in Copy Headers */,
+				4A68C23F16E691250023631D /* MDTreeAddNodestore.h in Copy Headers */,
 			);
 			name = "Copy Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,8 +745,6 @@
 		3EDE88CD15A12C3C00FB30BD /* USHCheckin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USHCheckin.m; sourceTree = "<group>"; };
 		3EDE88D015A12C3C00FB30BD /* USHComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USHComment.h; sourceTree = "<group>"; };
 		3EDE88D115A12C3C00FB30BD /* USHComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USHComment.m; sourceTree = "<group>"; };
-		3EDE88D415A12C3C00FB30BD /* USHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USHCategory.h; sourceTree = "<group>"; };
-		3EDE88D515A12C3C00FB30BD /* USHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USHCategory.m; sourceTree = "<group>"; };
 		3EDE88D815A12C3C00FB30BD /* USHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USHUser.h; sourceTree = "<group>"; };
 		3EDE88D915A12C3C00FB30BD /* USHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USHUser.m; sourceTree = "<group>"; };
 		3EDE88DC15A12C3C00FB30BD /* USHPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USHPhoto.h; sourceTree = "<group>"; };
@@ -730,6 +758,22 @@
 		3EFB23DE167BC11000321464 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = Localizable.strings; sourceTree = "<group>"; };
 		3EFF5ABD162097D20072FAE1 /* UITableView+USH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+USH.h"; sourceTree = "<group>"; };
 		3EFF5ABE162097D20072FAE1 /* UITableView+USH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+USH.m"; sourceTree = "<group>"; };
+		4A68C23A16E691190023631D /* MDTreeAddNodestore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTreeAddNodestore.h; sourceTree = "<group>"; };
+		4A68C23B16E691190023631D /* MDTreeAddNodeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTreeAddNodeStore.m; sourceTree = "<group>"; };
+		4A97406216DD3CCA00167D16 /* button_minus_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_minus_blue.png; sourceTree = "<group>"; };
+		4A97406316DD3CCA00167D16 /* button_plus_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_plus_blue.png; sourceTree = "<group>"; };
+		4A97406416DD3CCA00167D16 /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_checked.png; sourceTree = "<group>"; };
+		4A97406516DD3CCA00167D16 /* checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unchecked.png; sourceTree = "<group>"; };
+		4A97406F16DD3D8600167D16 /* MDTreeNodestore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTreeNodestore.h; sourceTree = "<group>"; };
+		4A97407016DD3D8600167D16 /* MDTreeNodeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTreeNodeStore.m; sourceTree = "<group>"; };
+		4A97407516DD3DC700167D16 /* CategoryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTree.h; sourceTree = "<group>"; };
+		4A97407616DD3DC700167D16 /* CategoryTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTree.m; sourceTree = "<group>"; };
+		4A97407716DD3DC700167D16 /* CategoryTreeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTreeManager.h; sourceTree = "<group>"; };
+		4A97407816DD3DC700167D16 /* CategoryTreeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTreeManager.m; sourceTree = "<group>"; };
+		4A97408116DD3E5600167D16 /* MDTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTreeNode.h; sourceTree = "<group>"; };
+		4A97408216DD3E5600167D16 /* MDTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTreeNode.m; sourceTree = "<group>"; };
+		4AACFF4916DD57CB0097ADFF /* USHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USHCategory.h; sourceTree = "<group>"; };
+		4AACFF4A16DD57CB0097ADFF /* USHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USHCategory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -931,6 +975,10 @@
 		3E971B2A15A36E0E005EB625 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				4A97407516DD3DC700167D16 /* CategoryTree.h */,
+				4A97407616DD3DC700167D16 /* CategoryTree.m */,
+				4A97407716DD3DC700167D16 /* CategoryTreeManager.h */,
+				4A97407816DD3DC700167D16 /* CategoryTreeManager.m */,
 				3E33D42215D56D5200010DC3 /* USHSynchronize.h */,
 				3E33D42315D56D5200010DC3 /* USHSynchronize.m */,
 				3E971B2B15A36E51005EB625 /* USHDownload.h */,
@@ -1069,6 +1117,8 @@
 		3EA235DA159B90730072A60D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4A97408116DD3E5600167D16 /* MDTreeNode.h */,
+				4A97408216DD3E5600167D16 /* MDTreeNode.m */,
 				3EDE88BC15A12C3C00FB30BD /* USHMap.h */,
 				3EDE88BD15A12C3C00FB30BD /* USHMap.m */,
 				3EDE88E015A12C3D00FB30BD /* USHReport.h */,
@@ -1077,8 +1127,6 @@
 				3EDE88CD15A12C3C00FB30BD /* USHCheckin.m */,
 				3EDE88D815A12C3C00FB30BD /* USHUser.h */,
 				3EDE88D915A12C3C00FB30BD /* USHUser.m */,
-				3EDE88D415A12C3C00FB30BD /* USHCategory.h */,
-				3EDE88D515A12C3C00FB30BD /* USHCategory.m */,
 				3EDE88D015A12C3C00FB30BD /* USHComment.h */,
 				3EDE88D115A12C3C00FB30BD /* USHComment.m */,
 				3EDE88DC15A12C3C00FB30BD /* USHPhoto.h */,
@@ -1091,6 +1139,8 @@
 				3EDE88C115A12C3C00FB30BD /* USHVideo.m */,
 				3EDE88B815A12C3C00FB30BD /* USHLocation.h */,
 				3EDE88B915A12C3C00FB30BD /* USHLocation.m */,
+				4AACFF4916DD57CB0097ADFF /* USHCategory.h */,
+				4AACFF4A16DD57CB0097ADFF /* USHCategory.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1115,6 +1165,10 @@
 		3EA23626159B90FF0072A60D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4A97406216DD3CCA00167D16 /* button_minus_blue.png */,
+				4A97406316DD3CCA00167D16 /* button_plus_blue.png */,
+				4A97406416DD3CCA00167D16 /* checkbox_checked.png */,
+				4A97406516DD3CCA00167D16 /* checkbox_unchecked.png */,
 				3E9E4D6A166FFBD10095F4A4 /* hide.png */,
 				3E9E4D6B166FFBD10095F4A4 /* hide@2x.png */,
 				3E9E4D6C166FFBD10095F4A4 /* show.png */,
@@ -1211,6 +1265,10 @@
 		3EAA806715EA110700F2FC16 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4A68C23A16E691190023631D /* MDTreeAddNodestore.h */,
+				4A68C23B16E691190023631D /* MDTreeAddNodeStore.m */,
+				4A97406F16DD3D8600167D16 /* MDTreeNodestore.h */,
+				4A97407016DD3D8600167D16 /* MDTreeNodeStore.m */,
 				3E9E4D7B166FFFBB0095F4A4 /* USHShareController.h */,
 				3E9E4D7C166FFFBB0095F4A4 /* USHShareController.m */,
 				3EAA80D815EA13FC00F2FC16 /* USHViewController.h */,
@@ -1360,7 +1418,6 @@
 				3EDE88CA15A12C3C00FB30BD /* USHSound.h in Headers */,
 				3EDE88CE15A12C3C00FB30BD /* USHCheckin.h in Headers */,
 				3EDE88D215A12C3C00FB30BD /* USHComment.h in Headers */,
-				3EDE88D615A12C3C00FB30BD /* USHCategory.h in Headers */,
 				3EDE88DA15A12C3C00FB30BD /* USHUser.h in Headers */,
 				3EDE88DE15A12C3C00FB30BD /* USHPhoto.h in Headers */,
 				3EDE88E215A12C3D00FB30BD /* USHReport.h in Headers */,
@@ -1406,6 +1463,12 @@
 				3E83651815A3BF7A00998484 /* USHDownloadLocation.h in Headers */,
 				3E83651C15A3C61500998484 /* USHDownloadCheckin.h in Headers */,
 				3E943117159A24C700864D11 /* SDK-Prefix.pch in Headers */,
+				4A97407116DD3D8600167D16 /* MDTreeNodestore.h in Headers */,
+				4A97407916DD3DC700167D16 /* CategoryTree.h in Headers */,
+				4A97407D16DD3DC700167D16 /* CategoryTreeManager.h in Headers */,
+				4A97408316DD3E5600167D16 /* MDTreeNode.h in Headers */,
+				4AACFF4B16DD57CB0097ADFF /* USHCategory.h in Headers */,
+				4A68C23C16E691190023631D /* MDTreeAddNodestore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1517,6 +1580,10 @@
 				3EBB4D7B167F695000DDB318 /* Localizable.strings in Resources */,
 				3EBB4D7C167F695000DDB318 /* Localizable.strings in Resources */,
 				3EAA31D716BBD1EC0089FC06 /* Localizable.strings in Resources */,
+				4A97406616DD3CCA00167D16 /* button_minus_blue.png in Resources */,
+				4A97406816DD3CCA00167D16 /* button_plus_blue.png in Resources */,
+				4A97406A16DD3CCA00167D16 /* checkbox_checked.png in Resources */,
+				4A97406C16DD3CCA00167D16 /* checkbox_unchecked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1533,6 +1600,10 @@
 				3EBB4D7E167F6A1F00DDB318 /* Localizable.strings in Resources */,
 				3EBB4D7F167F6A2100DDB318 /* Localizable.strings in Resources */,
 				3EBB4D80167F6A2400DDB318 /* Localizable.strings in Resources */,
+				4A97406716DD3CCA00167D16 /* button_minus_blue.png in Resources */,
+				4A97406916DD3CCA00167D16 /* button_plus_blue.png in Resources */,
+				4A97406B16DD3CCA00167D16 /* checkbox_checked.png in Resources */,
+				4A97406D16DD3CCA00167D16 /* checkbox_unchecked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1619,7 +1690,6 @@
 				3EDE88CB15A12C3C00FB30BD /* USHSound.m in Sources */,
 				3EDE88CF15A12C3C00FB30BD /* USHCheckin.m in Sources */,
 				3EDE88D315A12C3C00FB30BD /* USHComment.m in Sources */,
-				3EDE88D715A12C3C00FB30BD /* USHCategory.m in Sources */,
 				3EDE88DB15A12C3C00FB30BD /* USHUser.m in Sources */,
 				3EDE88DF15A12C3C00FB30BD /* USHPhoto.m in Sources */,
 				3EDE88E315A12C3D00FB30BD /* USHReport.m in Sources */,
@@ -1716,6 +1786,12 @@
 				3EA79914167B7B52009C83B1 /* SBJsonTokeniser.m in Sources */,
 				3EA79916167B7B52009C83B1 /* SBJsonUTF8Stream.m in Sources */,
 				3EA79918167B7B52009C83B1 /* SBJsonWriter.m in Sources */,
+				4A97407316DD3D8600167D16 /* MDTreeNodeStore.m in Sources */,
+				4A97407B16DD3DC700167D16 /* CategoryTree.m in Sources */,
+				4A97407F16DD3DC700167D16 /* CategoryTreeManager.m in Sources */,
+				4A97408516DD3E5600167D16 /* MDTreeNode.m in Sources */,
+				4AACFF4C16DD57CB0097ADFF /* USHCategory.m in Sources */,
+				4A68C23D16E691190023631D /* MDTreeAddNodeStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

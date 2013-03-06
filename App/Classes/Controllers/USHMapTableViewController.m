@@ -32,6 +32,8 @@
 #import <Ushahidi/NSString+USH.h>
 #import "USHSettings.h"
 #import <UShahidi/USHRefreshButtonItem.h>
+#import <Ushahidi/USHDatabase.h>
+#import <Ushahidi/CategoryTree.h>
 
 @interface USHMapTableViewController ()
 
@@ -110,6 +112,8 @@ typedef enum {
 - (IBAction)refresh:(id)sender event:(UIEvent*)event {
     DLog(@"");
     [self startRefreshControl];
+    NSLog(@"REFRESH DA BOTTONE");
+
 }
 
 - (IBAction)add:(id)sender event:(UIEvent*)event {
@@ -150,6 +154,7 @@ typedef enum {
 - (void) initialSyncIfNeeded {
     if ([[Ushahidi sharedInstance] synchronizeDate] == nil) {
         [self startRefreshControl];
+
     }
 }
 
@@ -186,6 +191,55 @@ typedef enum {
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
+    if ([[Ushahidi sharedInstance] synchronizeDate] != nil) {
+
+        /* CRI  AGGIUNTO PER CARICARE  LE CATEGORIE */
+        NSLog(@"REFRESH APPARE");
+        NSMutableArray *flatCategory = [[Ushahidi sharedInstance] flatCategory] ;
+        NSMutableDictionary *flatCategorySelected = [[Ushahidi sharedInstance] flatCategorySelected];
+        NSMutableDictionary *flatOnlyCategoryYES = [[Ushahidi sharedInstance] flatOnlyCategoryYES];
+        [flatCategory removeAllObjects];
+        [flatCategorySelected removeAllObjects];
+        [flatOnlyCategoryYES removeAllObjects];
+        /* Caricamento DATI tcategorie */
+        //NSArray *categories = [[USHDatabase sharedInstance] fetchArrayForName:@"Category" query:nil param:nil sort:nil];
+        
+        NSArray *categories = [[USHDatabase sharedInstance] fetchArrayForNameDesc:@"Category" query:nil param:nil sort:@"title", nil];
+        for(USHCategory *iTemCategory in categories) {
+            CategoryTree *elementFlat = [[CategoryTree alloc] init];
+            elementFlat.open = @"NO";
+            elementFlat.selected = @"YES";
+            elementFlat.title =  iTemCategory.title;
+            elementFlat.parent_id = iTemCategory.parent_id;
+            //elementFlat.parent_id = @"0";
+            elementFlat.id = iTemCategory.identifier;
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber * myNumber = [f numberFromString:iTemCategory.identifier];
+            elementFlat.indetifier = myNumber ;
+            [flatCategory addObject:elementFlat];
+            NSLog(@"-------------------------------------------------------");
+            NSLog(@"elementFlat.Title --> %@",elementFlat.title);
+            NSLog(@"elementFlat.parent_id --> %@",elementFlat.parent_id);
+            NSLog(@"elementFlat.id --> %@",elementFlat.id);
+            NSLog(@"elementFlat.indetifier--> %@",(NSString *)elementFlat.indetifier);
+            NSLog(@"elementFlat.selected --> %@",elementFlat.selected);
+            [flatCategorySelected setValue:elementFlat.selected forKey:(NSString *)elementFlat.indetifier];
+            NSString *value = [flatCategorySelected objectForKey:(NSString *)elementFlat.indetifier];
+            NSLog(@"flatCategorySelected --> %@",value);
+            
+            [flatOnlyCategoryYES setValue:@"YES" forKey:elementFlat.id];
+            NSLog(@"flatOnlyCategoryYES %@ --> %@",elementFlat.selected,elementFlat.id);
+            NSLog(@"-------------------------------------------------------");
+            
+        }
+        //NSString *value = [flatOnlyCategoryYES valueForKey:@"4"];
+        //NSLog(@"valueee 4 --> %@",value);
+        NSLog(@"Count  --> %i",flatCategory.count);
+        
+        /* CRI  AGGIUNTO PER CARICARE  LE CATEGORIE */
+    }
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
@@ -311,6 +365,7 @@ typedef enum {
         NSString * syncDate = [[Ushahidi sharedInstance] synchronizeDateWithFormat:@"h:mm a, MMM d, yyyy"];
         return [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Last synced", nil), syncDate];
     }
+    
     return nil;
 }
 
