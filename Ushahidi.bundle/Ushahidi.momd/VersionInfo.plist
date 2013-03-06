@@ -2,13 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSManagedObjectModel_CurrentVersionName</key>
+	<string>Ushahidi</string>
 	<key>NSManagedObjectModel_VersionHashes</key>
 	<dict>
 		<key>Ushahidi</key>
 		<dict>
 			<key>Category</key>
 			<data>
-			k1vKhZO08b3XezcFhqwjeHKPucSVWf/Fg2CLATUW6LY=
+			dotY/SXCEhkSW64GNNKUUJuROIi1FEYSop9D7jJdKJE=
 			</data>
 			<key>Checkin</key>
 			<data>

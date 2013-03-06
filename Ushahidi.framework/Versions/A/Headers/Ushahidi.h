@@ -38,9 +38,25 @@
 @class USHMap;
 @protocol UshahidiDelegate;
 
-@interface Ushahidi : NSObject
+@interface Ushahidi : NSObject{
+@public
+    NSMutableArray *flatCategory ;// CRI
+    NSMutableDictionary *flatCategorySelected;// CRI
+    NSMutableDictionary *flatOnlyCategoryYES;// CRI
+    NSMutableDictionary *flatCategoryTest;// CRI
+}
+
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(Ushahidi);
+/*
+@property (nonatomic, assign) NSMutableArray *flatCategory;// CRI
+@property (nonatomic, assign) NSMutableDictionary *flatCategorySelected;// CRI
+@property (nonatomic, assign) NSMutableDictionary *flatOnlyCategoryYES;// CRI
+*/
+@property (retain) NSMutableArray *flatCategoryTest;// CRI
+@property (retain) NSMutableArray *flatCategory;// CRI
+@property (retain) NSMutableDictionary *flatCategorySelected;// CRI
+@property (retain) NSMutableDictionary *flatOnlyCategoryYES;// CRI
 
 @property (nonatomic, assign) NSInteger syncOperations;
 @property (nonatomic, strong) NSString *youtubeUsername;

@@ -35,10 +35,10 @@
 #import <Ushahidi/USHMap.h>
 #import <Ushahidi/Ushahidi.h>
 #import <Ushahidi/USHInternet.h>
-#import <Ushahidi/USHLocator.h>
 #import <Ushahidi/NSString+USH.h>
 #import <Ushahidi/UITableView+USH.h>
 #import <Ushahidi/UIBarButtonItem+USH.h>
+#import "MDTreeAddViewController.h"
 
 @interface USHReportAddViewController ()
 
@@ -49,8 +49,6 @@
 @property (strong, nonatomic) USHLoginDialog *loginDialog;
 
 @property (strong, nonatomic) USHShareController *shareController;
-@property (strong, nonatomic) NSString *locateError;
-@property (strong, nonatomic) NSString *lookupError;
 
 - (void) showKeyboardForSection:(NSInteger)section;
 
@@ -69,8 +67,6 @@
 @synthesize locationAddViewController = _locationAddViewController;
 @synthesize settingsViewController = _settingsViewController;
 @synthesize openGeoSMS = _openGeoSMS;
-@synthesize locateError = _locateError;
-@synthesize lookupError = _lookupError;
 
 typedef enum {
     TableSectionTitle,
@@ -80,6 +76,7 @@ typedef enum {
     TableSectionLocation,
     TableSectionPhotos,
     TableSectionVideos,
+    TableSectionNews,
     TableSections
 } TableSection;
 
@@ -149,6 +146,12 @@ typedef enum {
     else if ([NSString isNilOrEmpty:self.report.location]) {
         [self showMessage:NSLocalizedString(@"Location Required", nil) hide:1.5];
         [self showKeyboardForSection:TableSectionLocation];
+    }
+    else if ([self.report.latitude doubleValue] == 0.0) {
+        [self showMessage:NSLocalizedString(@"Latitude Required", nil) hide:1.5];
+    }
+    else if ([self.report.longitude doubleValue] == 0.0) {
+        [self showMessage:NSLocalizedString(@"Longitude Required", nil) hide:1.5];
     }
     else {
         self.report.authorFirst = [[USHSettings sharedInstance] contactFirstName];
@@ -224,8 +227,6 @@ typedef enum {
     [_categoryTableController release];
     [_locationAddViewController release];
     [_settingsViewController release];
-    [_locateError release];
-    [_lookupError release];
     [super dealloc];
 }
 
@@ -236,14 +237,8 @@ typedef enum {
     self.videoPicker = [[[USHVideoPicker alloc] initWithController:self] autorelease];
     self.loginDialog = [[[USHLoginDialog alloc] initForDelegate:self] autorelease];
     self.shareController = [[[USHShareController alloc] initWithController:self] autorelease];
-    self.locateError = nil;
-    self.lookupError = nil;
-    
     if ([[USHSettings sharedInstance] showReportList]) {
-        self.leftBarButtonItem = [UIBarButtonItem borderedItemWithTitle:NSLocalizedString(@"Cancel", nil)
-                                                              tintColor:[[USHSettings sharedInstance] navBarColor]
-                                                                 target:self
-                                                                 action:@selector(cancel:event:)];
+        self.cancelButton.title = NSLocalizedString(@"Cancel", nil);
         self.navigationItem.title = NSLocalizedString(@"Add Report", nil);
     }
     else {
@@ -274,13 +269,9 @@ typedef enum {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[USHLocator sharedInstance] locateForDelegate:self];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [[USHLocator sharedInstance] stopLocate];
-    [[USHLocator sharedInstance] stopLookup];
+    if ([self.report.latitude intValue] == 0.0) {
+        [[USHLocator sharedInstance] locateForDelegate:self];
+    }
 }
 
 #pragma mark - UITableViewController
@@ -304,6 +295,12 @@ typedef enum {
             return 0;
         }
         if ([[USHSettings sharedInstance] youtubeCredentials] == NO) {
+            return 0;
+        }
+        return 1;
+    }
+    if (section == TableSectionNews) {
+        if (self.openGeoSMS) {
             return 0;
         }
         return 1;
@@ -366,44 +363,23 @@ typedef enum {
     }
     else if (indexPath.section == TableSectionLocation) {
         if (indexPath.row == TableSectionLocationRowAddress) {
-            NSString *placeholder;
-            if ([NSString isNilOrEmpty:self.locateError] == NO) {
-                placeholder = self.locateError;
-            }
-            else if ([NSString isNilOrEmpty:self.lookupError] == NO) {
-                placeholder = self.lookupError;
-            }
-            else {
-                placeholder = NSLocalizedString(@"Finding address...", nil);
-            }
-            return [USHTableCellFactory inputTableCellForTable:tableView
+            return [USHTableCellFactory inputTableCellForTable:tableView 
                                                      indexPath:indexPath 
                                                       delegate:self
-                                                   placeholder:placeholder
+                                                   placeholder:NSLocalizedString(@"Finding address...", nil)
                                                           text:self.report.location 
                                                           icon:@"map.png"];
         }
         else if (indexPath.row == TableSectionLocationRowCoordinates) {
-            NSString *coordinates;
-            BOOL greyed;
-            if ([NSString isNilOrEmpty:self.locateError] == NO) {
-                coordinates = [NSString stringWithFormat:@"%.1f, %.1f", self.report.latitude.floatValue, self.report.longitude.floatValue];
-                greyed = NO;
-            }
-            else if (self.report.latitude.intValue != 0.0) {
-                coordinates = [NSString stringWithFormat:@"%.8f, %.8f", self.report.latitude.floatValue, self.report.longitude.floatValue];
-                greyed = NO;
-            }
-            else {
-                coordinates = NSLocalizedString(@"Finding location...", nil);
-                greyed = YES;
-            }
-            return [USHTableCellFactory iconTableCellForTable:tableView
+            NSString *coordinates = [self.report.latitude intValue] != 0.0 
+                ? [NSString stringWithFormat:@"%.8f, %.8f", self.report.latitude.floatValue, self.report.longitude.floatValue]
+                : NSLocalizedString(@"Finding location...", nil);
+            return [USHTableCellFactory iconTableCellForTable:tableView 
                                                     indexPath:indexPath 
                                                          text:coordinates 
                                                          icon:@"place.png"
                                                     accessory:YES
-                                                       greyed:greyed];
+                                                       greyed:[self.report.latitude intValue] == 0.0];
         }
     }
     else if (indexPath.section == TableSectionPhotos) {
@@ -441,6 +417,19 @@ typedef enum {
                                                 accessory:YES
                                                    greyed:YES];
     }
+    else if (indexPath.section == TableSectionNews) {
+        return [USHTableCellFactory inputTableCellForTable:tableView 
+                                                 indexPath:indexPath 
+                                                  delegate:self
+                                               placeholder:NSLocalizedString(@"Enter webpage", nil)
+                                                     text:nil 
+                                                     icon:@"web.png"
+                                            capitalization:UITextAutocapitalizationTypeNone
+                                                correction:UITextAutocorrectionTypeNo
+                                                  spelling:UITextSpellCheckingTypeNo
+                                                  keyboard:UIKeyboardTypeURL
+                                                      done:UIKeyboardTypeDefault];
+    }
     return nil;
 }
 
@@ -467,11 +456,20 @@ typedef enum {
         [self.tableView reloadRowsAtSection:TableSectionPhotos];
     }
     else if (indexPath.section == TableSectionCategory) {
+        // ADD CATEGORIE
+
         self.categoryTableController.map = self.map;
         self.categoryTableController.report = self.report;
         self.categoryTableController.modalPresentationStyle = UIModalPresentationFormSheet;
         self.categoryTableController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentModalViewController:self.categoryTableController animated:YES];
+         
+        /*        
+        MDTreeAddViewController *treeAddViewController = [MDTreeAddViewController new];
+        UINavigationController *navAddController = [[UINavigationController alloc] initWithRootViewController:treeAddViewController];
+        treeAddViewController.map = self.map;
+        [self presentModalViewController:navAddController animated:YES];
+         */
     }
     else if (indexPath.section == TableSectionLocation) {
         self.locationAddViewController.map = self.map;
@@ -512,6 +510,11 @@ typedef enum {
         return 44;
     }
     if (indexPath.section == TableSectionVideos) {
+        if (self.openGeoSMS) {
+            return 0;
+        }
+    }
+    if (indexPath.section == TableSectionNews) {
         if (self.openGeoSMS) {
             return 0;
         }
@@ -564,7 +567,6 @@ typedef enum {
     DLog(@"%@,%@", latitude, longitude);
     self.report.latitude = latitude;
     self.report.longitude = longitude;
-    self.locateError = nil;
     [self.tableView reloadRowsAtSection:TableSectionLocation];
     if ([NSString isNilOrEmpty:self.report.location]) {
         [[USHLocator sharedInstance] lookupForDelegate:self];   
@@ -573,23 +575,16 @@ typedef enum {
 
 - (void) locateFailed:(USHLocator *)locator error:(NSError *)error {
     DLog(@"Error:%@", [error description]);
-    self.report.latitude = [NSNumber numberWithFloat:0.0];
-    self.report.longitude = [NSNumber numberWithFloat:0.0];
-    self.locateError = NSLocalizedString(@"Error finding location", nil);
-    [self.tableView reloadRowsAtSection:TableSectionLocation];
 }
 
 - (void) lookupFinished:(USHLocator *)locator address:(NSString *)address {
-    DLog(@"%@", address);
+    DLog(@"Address:%@", address);
     self.report.location = address;
-    self.lookupError = nil;
     [self.tableView reloadRowsAtSection:TableSectionLocation];
 }
 
 - (void) lookupFailed:(USHLocator *)locator error:(NSError *)error {
-    DLog(@"Error:%@", [error description]);
-    self.lookupError = NSLocalizedString(@"Error finding address", nil);
-    [self.tableView reloadRowsAtSection:TableSectionLocation];
+    DLog(@"Error:%@", [error description]); 
 }
 
 #pragma mark - USHImagePickerDelegate
@@ -627,8 +622,8 @@ typedef enum {
     else if (indexPath.section == TableSectionDescription) {
         self.report.desc = text;
     }
-    else if (indexPath.section == TableSectionLocation) {
-        self.report.location = text;
+    else if (indexPath.section == TableSectionNews) {
+        //TODO capture news URL
     }
 }
 

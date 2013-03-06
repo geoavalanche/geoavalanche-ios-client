@@ -17,7 +17,8 @@
  ** Ushahidi developers at team@ushahidi.com.
  **
  *****************************************************************************/
-
+#import "USHDatabase.h"
+#import "CategoryTreeManager.h"
 #import "USHMap.h"
 #import "USHCategory.h"
 #import "USHCheckin.h"
@@ -28,6 +29,7 @@
 #import "NSString+USH.h"
 #import "NSSet+USH.h"
 #import "NSArray+USH.h"
+
 
 @implementation USHMap
 
@@ -52,18 +54,23 @@
 @dynamic email;
 @dynamic sms;
 
+
 - (NSArray*)reportsWithCategory:(USHCategory*)category {
+    //return [self reportsWithCategory:category text:nil sort:USHSortByDate ascending:NO];
     return [self reportsWithCategory:category text:nil sort:USHSortByDate ascending:NO];
 }
 
 - (NSArray*)reportsWithCategory:(USHCategory*)category text:(NSString*)text {
+    //return [self reportsWithCategory:category text:nil sort:USHSortByDate ascending:NO];
     return [self reportsWithCategory:category text:nil sort:USHSortByDate ascending:NO];
 }
 
 - (NSArray*) reportsWithCategory:(USHCategory*)category text:(NSString*)text sort:(USHSort)sort {
+    //return [self reportsWithCategory:category text:nil sort:sort ascending:NO];
     return [self reportsWithCategory:category text:nil sort:sort ascending:NO];
 }
 
+/*
 - (NSArray*) reportsWithCategory:(USHCategory*)category text:(NSString*)text sort:(USHSort)sort ascending:(BOOL)ascending {
     NSMutableArray *filtered = [NSMutableArray array];
     NSString *sortedBy = sort == USHSortByDate ? @"date" : @"title";
@@ -97,7 +104,46 @@
     }
     return filtered;
 }
+*/
 
+- (NSArray*) reportsWithCategory:(USHCategory*)category text:(NSString*)text sort:(USHSort)sort ascending:(BOOL)ascending {
+    NSMutableArray *filtered = [NSMutableArray array];
+    NSString *sortedBy = sort == USHSortByDate ? @"date" : @"title";
+    for (USHReport *report in [self.reports sortedBy:sortedBy ascending:ascending]) {
+        BOOL hasCategory = NO;
+        BOOL hasText = NO;
+        // PRIMA CONTROLLO SE HA
+        if (text != nil) {
+            if ([report.title anyWordHasPrefix:text]) {
+                hasText = YES;
+            }
+            if ([report.desc anyWordHasPrefix:text]) {
+                hasText = YES;
+            }
+        }
+        else {
+            hasText = YES;
+        }
+        
+        if ( hasText ){
+            for (USHCategory *reportCategory in report.categories) {
+                NSString *value =[CategoryTreeManager isReportAdd:reportCategory.identifier searchtext:text titleReport:report.title];
+                if ( [value isEqual:@"YES"])
+                {
+                    hasCategory = YES;
+                    break;
+                }
+            }
+        }
+        
+        if (hasText && hasCategory) {
+            [filtered addObject:report];
+        }
+    }
+    return filtered;
+    //return [CategoryTreeManager isReportAdd:category.identifier searchtext:text titleReport:@"dd"];
+}
+ 
 - (NSArray*)checkinsForUser:(USHUser*)user text:(NSString*)text {
     NSMutableArray *filtered = [NSMutableArray array];
     for (USHCheckin *checkin in [self.checkins sortedBy:@"date" ascending:NO]) {
@@ -172,8 +218,16 @@
 }
 
 - (NSArray *) categoriesSortedByPosition {
-    return [self.categories sortedBy:@"position" andBy:@"title" ascending:YES];
+    return [self.categories sortedBy:@"position" ascending:YES];
 }
 
+- (USHCategory*)getCategoryByIdentifier:(NSMutableString*)identifier{
+    NSArray *categories = [[USHDatabase sharedInstance] fetchArrayForNameDesc:@"Category" query:identifier param:nil sort:@"title", nil];
+    USHCategory *retiTemCategory;
+    for(USHCategory *iTemCategory in categories) {
+        retiTemCategory =  iTemCategory;
+    }
+    return retiTemCategory;
+}
 
 @end
