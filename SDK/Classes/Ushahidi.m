@@ -56,7 +56,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Ushahidi);
 NSString * const kUSHSyncDate = @"USHSyncDate";
 
 #pragma mark - Properties
-
+@synthesize flatCategory;
+@synthesize flatCategorySelected;
+@synthesize flatOnlyCategoryYES;
 @synthesize synchronize = _synchronize;
 @synthesize uploads = _uploads;
 @synthesize youtubeUsername = _youtubeUsername;
@@ -77,6 +79,13 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
         [self.uploads setMaxConcurrentOperationCount:1];
         [self.uploads addObserver:self forKeyPath:@"operations" options:NSKeyValueObservingOptionNew context:nil];
     }
+    
+    // CRI
+    flatCategory = [[NSMutableArray alloc] init];
+    flatCategorySelected = [[NSMutableDictionary alloc] init];
+    flatOnlyCategoryYES = [[NSMutableDictionary alloc] init];
+    // CRI
+    
     return self;
 }
 
@@ -88,6 +97,9 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
     [_youtubeUsername release];
     [_youtubePassword release];
     [_youtubeDeveloperKey release];
+    [flatCategory release]; // CRI
+    [flatCategorySelected release];// CRI
+    [flatOnlyCategoryYES release];// CRI
     [super dealloc];
 }
 

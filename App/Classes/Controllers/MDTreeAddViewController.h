@@ -1,0 +1,23 @@
+//
+//  TreeViewController.h
+//  TreeDemo
+//
+//  Created by Max Desyatov on 08/11/2012.
+//  Copyright (c) 2012 Max Desyatov. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "USHReportMapViewController.h"
+#import <Ushahidi/USHMap.h>
+
+@interface MDTreeAddViewController : UITableViewController{
+    USHReportMapViewController *mapControllerTree;
+    USHMap *map;
+}
+
+@property (strong, nonatomic) USHReportMapViewController *mapControllerTree;
+@property (strong, nonatomic) USHMap *map;
+- (IBAction)done:(id)sender;
+- (UIColor *)toUIColor :(NSString *)colorHex;
+
+@end

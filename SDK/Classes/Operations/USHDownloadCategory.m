@@ -25,6 +25,8 @@
 #import "USHDatabase.h"
 #import "USHMap.h"
 #import "USHCategory.h"
+#import "CategoryTreeManager.h"
+#import "CategoryTree.h"
 
 @interface USHDownloadCategory ()
 
@@ -48,6 +50,16 @@
 - (void) downloadedJSON:(NSDictionary*)json {
     NSDictionary *payload = [json objectForKey:@"payload"];
     NSArray *categories = [payload objectForKey:@"categories"];
+    
+    /* CRI  AGGIUNTO PER CARICARE  LE CATEGORIE */
+    NSMutableArray *flatCategory = [[Ushahidi sharedInstance] flatCategory] ;
+    NSMutableDictionary *flatCategorySelected = [[Ushahidi sharedInstance] flatCategorySelected] ;
+    NSMutableDictionary *flatOnlyCategoryYES = [[Ushahidi sharedInstance] flatOnlyCategoryYES];
+    [flatCategory removeAllObjects];
+    [flatCategorySelected removeAllObjects];
+    [flatOnlyCategoryYES removeAllObjects];
+    /* CRI  AGGIUNTO PER CARICARE  LE CATEGORIE */
+    
     for (NSDictionary *item in categories) {
         NSDictionary *category = [item objectForKey:@"category"];
         if (category != nil) {
@@ -59,6 +71,36 @@
             self.category.desc = [category stringForKey:@"description"];
             self.category.color = [category stringForKey:@"color"];
             self.category.position = [NSNumber numberWithInt:[category intForKey:@"position"]];
+            NSInteger tipoCategoria = [category intForKey:@"parent_id"];
+            self.category.parent_id = [NSString stringWithFormat:@"%i", tipoCategoria];
+            
+            /* CRI  AGGIUNTO PER CARICARE  LE CATEGORIE */
+            
+            CategoryTree *elementFlat = [[CategoryTree alloc] init];
+            elementFlat.open = @"NO";
+            elementFlat.selected = @"YES";
+            elementFlat.title =  self.category.title;
+            elementFlat.parent_id = self.category.parent_id;
+            elementFlat.id = self.category.identifier;
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber * myNumber = [f numberFromString:self.category.identifier];
+            elementFlat.indetifier = myNumber ;
+            [flatCategory addObject:elementFlat];
+            NSLog(@"------------------ RICARICO INIT ----------------------");
+            NSLog(@"elementFlat.Title --> %@",elementFlat.title);
+            NSLog(@"elementFlat.parent_id --> %@",elementFlat.parent_id);
+            NSLog(@"elementFlat.id --> %@",elementFlat.indetifier);
+            NSLog(@"elementFlat.selected --> %@",elementFlat.selected);
+            [flatCategorySelected setValue:elementFlat.selected forKey:elementFlat.indetifier];
+            NSString *value = [flatCategorySelected objectForKey:elementFlat.indetifier];
+            NSLog(@"flatCategorySelected --> %@",value);
+            [flatOnlyCategoryYES setValue:@"YES" forKey:elementFlat.id];
+            NSLog(@"flatOnlyCategoryYES %@ --> %@",elementFlat.selected,elementFlat.id);
+            NSLog(@"------------------ RICARICO END ----------------------");     
+            
+            /* CRI  AGGIUNTO PER CARICARE  LE CATEGORIE */
+            
             self.category.map = self.map;
             DLog(@"Map:%@ Category:%@", self.map.name, self.category.title);
             [[USHDatabase sharedInstance] saveChanges];
@@ -66,6 +108,11 @@
                                withObjects:self, self.map, nil];
         }
     }
+    //NSString *value = [flatOnlyCategoryYES valueForKey:@"4"];
+    //NSLog(@"valueee 4 --> %@",value);
+    NSLog(@"Count  --> %i",flatCategory.count);
+
+
 }
 
 - (void)dealloc {
