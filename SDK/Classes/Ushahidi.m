@@ -59,6 +59,8 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
 @synthesize flatCategory;
 @synthesize flatCategorySelected;
 @synthesize flatOnlyCategoryYES;
+@synthesize flatCategoryToAdd;
+@synthesize flatCategoryToAddSelected;
 @synthesize synchronize = _synchronize;
 @synthesize uploads = _uploads;
 @synthesize youtubeUsername = _youtubeUsername;
@@ -84,6 +86,8 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
     flatCategory = [[NSMutableArray alloc] init];
     flatCategorySelected = [[NSMutableDictionary alloc] init];
     flatOnlyCategoryYES = [[NSMutableDictionary alloc] init];
+    flatCategoryToAdd = [[NSMutableDictionary alloc] init];
+    flatCategoryToAddSelected = [[NSMutableDictionary alloc] init];
     // CRI
     
     return self;
@@ -100,6 +104,8 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
     [flatCategory release]; // CRI
     [flatCategorySelected release];// CRI
     [flatOnlyCategoryYES release];// CRI
+    [flatCategoryToAdd release];// CRI
+    [flatCategoryToAddSelected release];// CRI
     [super dealloc];
 }
 

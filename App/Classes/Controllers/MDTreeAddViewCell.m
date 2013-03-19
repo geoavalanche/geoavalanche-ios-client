@@ -35,6 +35,11 @@
     BOOL checked = false;
     NSLog(@"prepareForReuse button.tag: %@",(NSString *)buttonCheck.tag);
     
+    NSMutableDictionary *flatCategoryToAddSelected = [[Ushahidi sharedInstance] flatCategoryToAddSelected];
+    NSInteger myInteger = [buttonCheck.tag integerValue];
+    NSString *key =[NSString stringWithFormat:@"%i", myInteger];
+    USHCategory *category = [flatCategoryToAddSelected objectForKey:key];
+    
     /*
     NSMutableDictionary *dictionary = [[Ushahidi sharedInstance] flatCategorySelected];
     NSString *selected = [dictionary objectForKey:(NSString *)buttonCheck.tag];
@@ -47,8 +52,17 @@
         checked = false;
     }
      */
+    if (category != NULL )
+    {
+        [buttonCheck setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
+        checked = true;
+    }else{
+        
+            [buttonCheck setImage:[UIImage imageNamed:@"checkbox_unchecked.png"] forState:UIControlStateNormal];
+            checked = false;
+    }
     
-    [buttonCheck setImage:[UIImage imageNamed:@"checkbox_unchecked.png"] forState:UIControlStateNormal];    
+
     if (_hasChildren)
     {
         [self.buttonExpand setHidden:NO];

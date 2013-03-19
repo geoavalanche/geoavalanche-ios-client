@@ -15,7 +15,7 @@
 @property (weak) MDTreeNode *parent;
 @property (assign) BOOL isExpanded;
 @property (assign) NSNumber *id;
-
+@property (assign) NSString *identifier;
 
 - (NSArray *)flatten;
 

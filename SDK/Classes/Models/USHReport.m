@@ -95,6 +95,7 @@
     return result;
 }
 
+
 - (BOOL) containsCategory:(USHCategory*)category {
     for (USHCategory *cat in self.categories) {
         if (cat.identifier == category.identifier &&

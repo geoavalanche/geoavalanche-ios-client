@@ -123,7 +123,7 @@ static const CGFloat kCornerRadius = 10;
 }
 
 - (void) showSearchBar {
-	[self showSearchBarWithPlaceholder:nil];
+	//[self showSearchBarWithPlaceholder:nil];
 }
 
 - (void) showSearchBarWithPlaceholder:(NSString *)placeholder {

@@ -18,6 +18,9 @@
 @implementation MDTreeAddViewController
 
 @synthesize mapControllerTree;
+@synthesize map;
+@synthesize report;
+
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [[USHSettings sharedInstance] tableRowColor];
@@ -68,17 +71,6 @@
     CategoryTreeManager *operazione = [[CategoryTreeManager alloc] init];
     [operazione createTreeAdd:flatCategory];
     [operazione dealloc];
-    /*
-    [[MDTreeNodeStore sharedStore]   removeAll] ;
-    NSMutableArray *flatCategory = [[Ushahidi sharedInstance] flatCategory];
-    NSLog(@"Count in MDTreeViewController: %i",flatCategory.count);
-    CategoryTreeManager *operazione = [[CategoryTreeManager alloc] init];
-    [operazione createTree:flatCategory];
-    NSMutableDictionary *flatOnlyCategoryYES = [[Ushahidi sharedInstance] flatOnlyCategoryYES];
-    [flatOnlyCategoryYES removeAllObjects];
-    [operazione dealloc];
-     */
-    
     // CRI
 
     return self;
@@ -186,12 +178,6 @@
 - (IBAction)done:(id)sender
 {
     // CRI
-    NSMutableDictionary *dictionary = [[Ushahidi sharedInstance] flatCategorySelected];
-    NSMutableArray *flatCategory = [[Ushahidi sharedInstance] flatCategory] ;
-    NSMutableDictionary *flatOnlyCategoryYES = [[Ushahidi sharedInstance] flatOnlyCategoryYES];
-    
-    
-    
     [self dismissModalViewControllerAnimated:YES];   
 }
 
@@ -392,44 +378,48 @@
      */
 }
 
+
 -(void) cellButtonAction:(id)sender{
     UIButton *button = (UIButton *)sender;
-    NSLog(@"Button tag pressed: %@",(NSString *)button.tag);
-    BOOL check = false;
-    //NSMutableDictionary *dictionary = [[Ushahidi sharedInstance] flatCategorySelected];
-    if( [[button imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"checkbox_checked.png"]])
-    {
-        [button setImage:[UIImage imageNamed:@"checkbox_unchecked.png"] forState:UIControlStateNormal];
-        //[dictionary setValue:@"NO" forKey:(NSString *)button.tag];
-    }
-    else
-    {
-        [button setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
-        //[dictionary setValue:@"YES" forKey:(NSString *)button.tag];
-        check = true;
-    }
-
     UITableViewCell *tableViewCell = (UITableViewCell *)button.superview.superview;
     UITableView* tableView = (UITableView *)tableViewCell.superview;
     NSIndexPath* pathOfTheCell = [tableView indexPathForCell:tableViewCell];
     NSInteger rowOfTheCell = pathOfTheCell.row;
     NSLog(@"rowofthecell %d", rowOfTheCell);
-
+    
     NSArray *nodes = [[MDTreeAddNodeStore sharedStore] allNodes];
     MDTreeNode *selectedNode = [nodes objectAtIndex:pathOfTheCell.row];
 
-    /*
-    if ( selectedNode.isExpanded == true)
+    NSInteger myInteger = [button.tag integerValue];
+    NSString *key =[NSString stringWithFormat:@"%i", myInteger];
+
+    
+    NSMutableDictionary *flatCategoryToAdd = [[Ushahidi sharedInstance] flatCategoryToAdd];
+    NSMutableDictionary *flatCategoryToAddSelected = [[Ushahidi sharedInstance] flatCategoryToAddSelected];
+    USHCategory *category = [flatCategoryToAddSelected objectForKey:key];
+    USHCategory *categoryDic = [flatCategoryToAdd objectForKey:key];
+
+    if( [[button imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"checkbox_checked.png"]])
     {
-        NSLog(@"is Expanded");
-        if (check == true ) [self setCildren:@"YES" node:selectedNode withCell:@"YES"];
-        if (check == false )[self setCildren:@"NO" node:selectedNode withCell:@"YES"];
-    }else{
-        NSLog(@"is not  Expanded");
-        if (check == true )[self setCildren:@"YES" node:selectedNode withCell:@"NO"];
-        if (check == false )[self setCildren:@"NO" node:selectedNode withCell:@"NO"];
+        [button setImage:[UIImage imageNamed:@"checkbox_unchecked.png"] forState:UIControlStateNormal];
+        if (category!=nil)
+        {
+            [report removeCategoriesObject:category];
+            [flatCategoryToAddSelected removeObjectForKey:key];
+        }
     }
-    */
+    else
+    {
+        
+        category = categoryDic;
+        if (category!=NULL)
+        {
+            [button setImage:[UIImage imageNamed:@"checkbox_checked.png"] forState:UIControlStateNormal];
+            [report addCategoriesObject:category];
+            [flatCategoryToAddSelected setObject:category forKey:key];
+        }
+    }
+
 }
 
 

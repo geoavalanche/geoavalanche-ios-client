@@ -44,6 +44,9 @@
     NSMutableDictionary *flatCategorySelected;// CRI
     NSMutableDictionary *flatOnlyCategoryYES;// CRI
     NSMutableDictionary *flatCategoryTest;// CRI
+    NSMutableDictionary *flatCategoryToAdd;// CRI
+    NSMutableDictionary *flatCategoryToAddSelected;// CRI
+    
 }
 
 
@@ -57,6 +60,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(Ushahidi);
 @property (retain) NSMutableArray *flatCategory;// CRI
 @property (retain) NSMutableDictionary *flatCategorySelected;// CRI
 @property (retain) NSMutableDictionary *flatOnlyCategoryYES;// CRI
+@property (retain) NSMutableDictionary *flatCategoryToAdd;// CRI
+@property (retain) NSMutableDictionary *flatCategoryToAddSelected;// CRI
 
 @property (nonatomic, assign) NSInteger syncOperations;
 @property (nonatomic, strong) NSString *youtubeUsername;

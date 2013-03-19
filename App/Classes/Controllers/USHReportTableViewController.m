@@ -138,6 +138,8 @@ typedef enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == TableSectionReports) {
         NSArray *reports = [self.map reportsWithCategory:self.category text:self.searchText];
+        NSLog(@"self.searchText %@",self.searchText);
+        NSLog(@"reports.count %i",reports.count);
         return reports.count > 0 ? reports.count : 1;
     }
     else if (section == TableSectionPending) {
@@ -177,8 +179,13 @@ typedef enum {
     }
     else if (indexPath.section == TableSectionReports) {
         NSArray *reports = [self listOfReports];
+        NSLog(@"reports.count %i", reports.count);
+        NSLog(@"indexPath.row %i", indexPath.row);
+        NSLog(@"------------------");
         if (reports.count > 1) {
+            
             USHReport *report = [reports objectAtIndex:indexPath.row];
+
             BOOL hasPhotos = report.photos.count > 0 || report.snapshot != nil;
             USHReportTableCell *cell = [USHTableCellFactory reportTableCellForTable:tableView indexPath:indexPath hasPhotos:hasPhotos];
             cell.titleLabel.text = report.title;
@@ -295,6 +302,14 @@ typedef enum {
 }
 
 - (void) searchTextDidChange:(NSString *)searchText {
+    //[self.tableView reloadData];
+    if (searchText == NULL || searchText.length == 0 )
+    {
+       //[self.tableView reloadData];
+    }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self.tableView reloadData];
 }
 

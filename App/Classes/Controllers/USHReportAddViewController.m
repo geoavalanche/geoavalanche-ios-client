@@ -457,19 +457,30 @@ typedef enum {
     }
     else if (indexPath.section == TableSectionCategory) {
         // ADD CATEGORIE
-
+        /*
         self.categoryTableController.map = self.map;
         self.categoryTableController.report = self.report;
         self.categoryTableController.modalPresentationStyle = UIModalPresentationFormSheet;
         self.categoryTableController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentModalViewController:self.categoryTableController animated:YES];
-         
-        /*        
+        [self presentModalViewController:self.categoryTableController animated:YES];      
+        */
+        
+
+        NSMutableDictionary *flatCategoryToAdd = [[Ushahidi sharedInstance] flatCategoryToAdd];
+        [flatCategoryToAdd removeAllObjects];
+        NSArray *categories = [self.map categoriesSortedByPosition];
+        for ( USHCategory *cat in categories ) {
+            NSString *num = cat.identifier;
+            NSLog(@"flatCategoryToAdd: %@", num );
+            [flatCategoryToAdd setObject:cat forKey:num];
+        }
+        
         MDTreeAddViewController *treeAddViewController = [MDTreeAddViewController new];
-        UINavigationController *navAddController = [[UINavigationController alloc] initWithRootViewController:treeAddViewController];
         treeAddViewController.map = self.map;
+        treeAddViewController.report = self.report;
+        UINavigationController *navAddController = [[UINavigationController alloc] initWithRootViewController:treeAddViewController];
         [self presentModalViewController:navAddController animated:YES];
-         */
+
     }
     else if (indexPath.section == TableSectionLocation) {
         self.locationAddViewController.map = self.map;

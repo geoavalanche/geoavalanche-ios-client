@@ -10,13 +10,18 @@
 #import "USHReportMapViewController.h"
 #import <Ushahidi/USHMap.h>
 
+@class USHMap;
+@class USHReport;
+
 @interface MDTreeAddViewController : UITableViewController{
     USHReportMapViewController *mapControllerTree;
     USHMap *map;
+    USHReport *report;
 }
 
 @property (strong, nonatomic) USHReportMapViewController *mapControllerTree;
 @property (strong, nonatomic) USHMap *map;
+@property (strong, nonatomic) USHReport *report;
 - (IBAction)done:(id)sender;
 - (UIColor *)toUIColor :(NSString *)colorHex;
 
