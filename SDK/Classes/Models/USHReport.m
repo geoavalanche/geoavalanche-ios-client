@@ -95,7 +95,6 @@
     return result;
 }
 
-
 - (BOOL) containsCategory:(USHCategory*)category {
     for (USHCategory *cat in self.categories) {
         if (cat.identifier == category.identifier &&
@@ -131,7 +130,13 @@
 }
 
 - (NSString *) date12Hour {
-    return [self dateFormatted:@"hh"];
+    if (self.date != nil) {
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+		NSDateComponents *components = [calendar components:kCFCalendarUnitHour fromDate:self.date];
+        NSInteger hour = [components hour] > 12 ? [components hour] - 12 : [components hour];
+        return [NSString stringWithFormat:@"%d", hour];
+    }
+    return nil;
 }
 
 - (NSString *) date24Hour {
@@ -146,8 +151,7 @@
 	if (self.date != nil) {
 		NSCalendar *calendar = [NSCalendar currentCalendar];
 		NSDateComponents *components = [calendar components:kCFCalendarUnitHour fromDate:self.date];
-		NSString *value = [components hour] >= 12 ? @"pm" : @"am";
-		return value;
+		return [components hour] >= 12 ? @"pm" : @"am";
 	}
 	return nil;
 }

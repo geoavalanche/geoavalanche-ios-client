@@ -38,10 +38,6 @@
 #import <Ushahidi/Ushahidi.h>
 #import <Ushahidi/USHDevice.h>
 #import <Ushahidi/NSBundle+USH.h>
-#import <Ushahidi/USHDatabase.h>
-#import <Ushahidi/CategoryTreeManager.h>
-#import <Ushahidi/CategoryTree.h>
-#import "MDTreeViewController.h"
 
 @interface USHReportTabBarController ()
 
@@ -95,55 +91,15 @@
 - (IBAction)filter:(id)sender event:(UIEvent*)event {
     DLog(@"");
 	NSMutableArray *titles = [NSMutableArray arrayWithObject:NSLocalizedString(@"--- ALL CATEGORIES ---", nil)];
-    
-    /*
-     if (  [category.parent_id isEqualToString:@"0"]   ){
-     NSLog(@"Master categoria: %@",category.parent_id);
-     [titles addObject:category.title];
-     }
-     */
-    
-    /*
-	for (USHCategory *category in self.map.categories) {
+	for (USHCategory *category in self.map.categoriesSortedByPosition) {
 		if (category.title != nil) {
-     
-			//[titles addObject:category.title];
-            // INIZIO -  MODIFICA PER NON FAR CONSIDERARE LE CATEGORIE MASTER
-            //      [titles addObject:theCategory.title];
-
-    
-            // FINE -  MODIFICA PER NON FAR CONSIDERARE LE CATEGORIE MASTER
-    
-        [titles addObject:category.title];
+			[titles addObject:category.title];
 		}
 	}
-    
-    
-    [self.itemPicker showWithItems:titles
+    [self.itemPicker showWithItems:titles 
                           selected:self.category.title
                              event:event
                                tag:0];
-
-    */
-    if ([USHDevice isIPad]) {
-        MDTreeViewController *treeViewController = [MDTreeViewController new];
-        UINavigationController *navController =
-        [[UINavigationController alloc] initWithRootViewController:treeViewController];
-        //reportMapController     self.reportMapController
-        treeViewController.mapControllerTree = self.reportMapController;
-
-        
-        [self presentModalViewController:navController animated:YES];
-    }else{
-        
-        MDTreeViewController *treeViewController = [MDTreeViewController new];
-        UINavigationController *navController =
-        [[UINavigationController alloc]
-         initWithRootViewController:treeViewController];
-                treeViewController.mapControllerTree = self.reportMapController;
-        
-        [self presentModalViewController:navController animated:YES];
-    }  
 }
 
 - (IBAction)info:(id)sender event:(UIEvent*)event {
@@ -298,8 +254,7 @@
 #pragma mark - USHItemPickerDelegate
 
 - (void) itemPickerReturned:(USHItemPicker *)itemPicker item:(NSString *)item index:(NSInteger)index {
-    DLog(@"%d : %@", index, item);
-    // FILTRO CATEGORIE
+    DLog(@"%d : %@", index, item); 
     if (index == 0) {
         self.category = nil;
         self.reportMapController.category = nil;
@@ -341,9 +296,6 @@
         else {
             self.rightBarButtonItem = [self barButtonWithItems:self.locateButton, self.filterButton, nil];
         }
-        // OKKIO
-        [self.reportMapController refreshMap];
-
     }
     else if (viewController == self.checkinTableController) {
         DLog(@"USHCheckinTableViewController");
@@ -351,7 +303,6 @@
     else {
         DLog(@"%@", viewController.class);
     }
-    
 }
 
 #pragma mark - UIActionSheetDelegate

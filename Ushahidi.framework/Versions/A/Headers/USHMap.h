@@ -89,5 +89,5 @@ typedef NS_ENUM(NSInteger, USHSort) {
 - (void)removeCheckinsObject:(USHCheckin *)value;
 - (void)addCheckins:(NSSet *)values;
 - (void)removeCheckins:(NSSet *)values;
-- (USHCategory*)getCategoryByIdentifier:(NSMutableString*)identifier;
+
 @end

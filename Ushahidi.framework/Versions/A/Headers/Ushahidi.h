@@ -38,30 +38,9 @@
 @class USHMap;
 @protocol UshahidiDelegate;
 
-@interface Ushahidi : NSObject{
-@public
-    NSMutableArray *flatCategory ;// CRI
-    NSMutableDictionary *flatCategorySelected;// CRI
-    NSMutableDictionary *flatOnlyCategoryYES;// CRI
-    NSMutableDictionary *flatCategoryTest;// CRI
-    NSMutableDictionary *flatCategoryToAdd;// CRI
-    NSMutableDictionary *flatCategoryToAddSelected;// CRI
-    
-}
-
+@interface Ushahidi : NSObject
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(Ushahidi);
-/*
-@property (nonatomic, assign) NSMutableArray *flatCategory;// CRI
-@property (nonatomic, assign) NSMutableDictionary *flatCategorySelected;// CRI
-@property (nonatomic, assign) NSMutableDictionary *flatOnlyCategoryYES;// CRI
-*/
-@property (retain) NSMutableArray *flatCategoryTest;// CRI
-@property (retain) NSMutableArray *flatCategory;// CRI
-@property (retain) NSMutableDictionary *flatCategorySelected;// CRI
-@property (retain) NSMutableDictionary *flatOnlyCategoryYES;// CRI
-@property (retain) NSMutableDictionary *flatCategoryToAdd;// CRI
-@property (retain) NSMutableDictionary *flatCategoryToAddSelected;// CRI
 
 @property (nonatomic, assign) NSInteger syncOperations;
 @property (nonatomic, strong) NSString *youtubeUsername;
@@ -81,10 +60,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(Ushahidi);
 - (NSString*) synchronizeDateWithFormat:(NSString*)format;
 
 - (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate;
-- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate photos:(BOOL)photos maps:(BOOL)maps;
+- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate photos:(BOOL)photos maps:(BOOL)maps limit:(NSInteger)limit;
 
 - (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate map:(USHMap*)map;
-- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate map:(USHMap*)map photos:(BOOL)photos maps:(BOOL)maps;
+- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate map:(USHMap*)map photos:(BOOL)photos maps:(BOOL)maps limit:(NSInteger)limit;
 
 - (BOOL) findMapsWithDelegate:(NSObject<UshahidiDelegate>*)delegate;
 - (BOOL) findMapsWithDelegate:(NSObject<UshahidiDelegate>*)delegate radius:(NSString*)radius latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;

@@ -39,7 +39,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(USHDatabase);
 - (NSObject*) fetchOrInsertItemForName:(NSString*)name query:(NSString*)query params:(NSString*)param,... NS_REQUIRES_NIL_TERMINATION;
 
 - (NSArray *) fetchArrayForName:(NSString *)name query:(NSString*)query param:(NSString*)param sort:(NSString *)sort,... NS_REQUIRES_NIL_TERMINATION;
-- (NSArray *) fetchArrayForNameDesc:(NSString *)name query:(NSString*)query param:(NSString*)param sort:(NSString *)sort,... NS_REQUIRES_NIL_TERMINATION;
 - (NSArray *) fetchArrayForName:(NSString *)name query:(NSString*)query params:(NSString*)param, ... NS_REQUIRES_NIL_TERMINATION;
 
 - (NSObject*) fetchItemForName:(NSString *)name query:(NSString*)query param:(NSString*)param;

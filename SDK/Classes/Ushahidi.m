@@ -56,11 +56,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Ushahidi);
 NSString * const kUSHSyncDate = @"USHSyncDate";
 
 #pragma mark - Properties
-@synthesize flatCategory;
-@synthesize flatCategorySelected;
-@synthesize flatOnlyCategoryYES;
-@synthesize flatCategoryToAdd;
-@synthesize flatCategoryToAddSelected;
+
 @synthesize synchronize = _synchronize;
 @synthesize uploads = _uploads;
 @synthesize youtubeUsername = _youtubeUsername;
@@ -81,15 +77,6 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
         [self.uploads setMaxConcurrentOperationCount:1];
         [self.uploads addObserver:self forKeyPath:@"operations" options:NSKeyValueObservingOptionNew context:nil];
     }
-    
-    // CRI
-    flatCategory = [[NSMutableArray alloc] init];
-    flatCategorySelected = [[NSMutableDictionary alloc] init];
-    flatOnlyCategoryYES = [[NSMutableDictionary alloc] init];
-    flatCategoryToAdd = [[NSMutableDictionary alloc] init];
-    flatCategoryToAddSelected = [[NSMutableDictionary alloc] init];
-    // CRI
-    
     return self;
 }
 
@@ -101,11 +88,6 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
     [_youtubeUsername release];
     [_youtubePassword release];
     [_youtubeDeveloperKey release];
-    [flatCategory release]; // CRI
-    [flatCategorySelected release];// CRI
-    [flatOnlyCategoryYES release];// CRI
-    [flatCategoryToAdd release];// CRI
-    [flatCategoryToAddSelected release];// CRI
     [super dealloc];
 }
 
@@ -123,14 +105,16 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
 
 - (BOOL) hasMap:(USHMap*)map {
     if (map != nil && map.url != nil) {
-         return [[USHDatabase sharedInstance] fetchCountForName:@"Map" query:@"url = %@ && added != nil" param:map.url] > 0;
+        NSString *host = [[NSURL URLWithString:map.url] host];
+        return [[USHDatabase sharedInstance] fetchCountForName:@"Map" query:@"(url CONTAINS[cd] %@) && added != nil" param:host] > 0;
     }
     return NO;
 }
 
 - (BOOL) hasMapWithUrl:(NSString*)url {
     if ([NSString isNilOrEmpty:url] == NO) {
-        return [[USHDatabase sharedInstance] fetchCountForName:@"Map" query:@"url = %@ && added != nil" param:url] > 0;
+        NSString *host = [[NSURL URLWithString:url] host];
+        return [[USHDatabase sharedInstance] fetchCountForName:@"Map" query:@"(url CONTAINS[cd] %@) && added != nil" param:host] > 0;
     }
     return NO;
 }
@@ -278,7 +262,8 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
 }
 
 - (USHMap *) mapWithUrl:(NSString *)url {
-    return (USHMap*)[[USHDatabase sharedInstance] fetchItemForName:@"Map" query:@"url = %@ && added != nil" param:url];
+    NSString *host = [[NSURL URLWithString:url] host];
+    return (USHMap*)[[USHDatabase sharedInstance] fetchItemForName:@"Map" query:@"(url CONTAINS[cd] %@) && added != nil" param:host];
 }
 
 - (BOOL) removeMap:(USHMap*)map {
@@ -341,17 +326,18 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
 }
 
 - (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate {
-    return [self synchronizeWithDelegate:delegate photos:YES maps:NO];
+    return [self synchronizeWithDelegate:delegate photos:YES maps:NO limit:0];
 }
 
-- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate photos:(BOOL)photos maps:(BOOL)maps {
+- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate photos:(BOOL)photos maps:(BOOL)maps limit:(NSInteger)limit {
     if ([self numberOfMaps] > 0) {
         for (USHMap *map in self.maps) {
             USHSynchronize *synchronize = [[[USHSynchronize alloc] initWithDelegate:self
                                                                            callback:delegate
                                                                                 map:map
-                                                                             downloadPhotos:photos
+                                                                     downloadPhotos:photos
                                                                        downloadMaps:maps
+                                                                      downloadLimit:limit
                                                                          youtubeKey:self.youtubeDeveloperKey
                                                                     youtubeUsername:self.youtubeUsername
                                                                     youtubePassword:self.youtubePassword] autorelease];
@@ -363,16 +349,17 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
 }
 
 - (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate map:(USHMap*)map {
-    return [self synchronizeWithDelegate:delegate map:map photos:YES maps:NO];
+    return [self synchronizeWithDelegate:delegate map:map photos:YES maps:NO limit:0];
 }
 
-- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate map:(USHMap*)map photos:(BOOL)photos maps:(BOOL)maps {
+- (BOOL) synchronizeWithDelegate:(NSObject<UshahidiDelegate>*)delegate map:(USHMap*)map photos:(BOOL)photos maps:(BOOL)maps limit:(NSInteger)limit {
     if (map != nil) {
         USHSynchronize *synchronize = [[[USHSynchronize alloc] initWithDelegate:self
                                                                        callback:delegate
                                                                             map:map
                                                                  downloadPhotos:photos
                                                                    downloadMaps:maps
+                                                                  downloadLimit:limit
                                                                      youtubeKey:self.youtubeDeveloperKey
                                                                 youtubeUsername:self.youtubeUsername
                                                                 youtubePassword:self.youtubePassword] autorelease];

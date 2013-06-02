@@ -33,9 +33,6 @@
 #import <Ushahidi/UITableView+USH.h>
 #import <Ushahidi/UIAlertView+USH.h>
 #import "USHSettings.h"
-#import <Ushahidi/USHDatabase.h>
-#import <Ushahidi/CategoryTreeManager.h>
-#import <Ushahidi/CategoryTree.h>
 
 @interface USHReportTableViewController ()
 
@@ -72,7 +69,8 @@ typedef enum {
     if ([[Ushahidi sharedInstance] synchronizeWithDelegate:self
                                                        map:self.map
                                                     photos:[[USHSettings sharedInstance] downloadPhotos]
-                                                      maps:[[USHSettings sharedInstance] downloadMaps]]) {
+                                                      maps:[[USHSettings sharedInstance] downloadMaps]
+                                                     limit:[[USHSettings sharedInstance] downloadLimit]]) {
         DLog(@"Syncing...");
     }
     else {
@@ -84,9 +82,7 @@ typedef enum {
     if ([[Ushahidi sharedInstance] synchronizeDate] == nil) {
         [self showLoadingWithMessage:NSLocalizedString(@"Loading...", nil)];
         [self startRefreshControl];
-        
     }
-
 }
 
 #pragma mark - USHMap
@@ -137,9 +133,7 @@ typedef enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == TableSectionReports) {
-        NSArray *reports = [self.map reportsWithCategory:self.category text:self.searchText];
-        NSLog(@"self.searchText %@",self.searchText);
-        NSLog(@"reports.count %i",reports.count);
+        NSArray *reports = [self listOfReports];
         return reports.count > 0 ? reports.count : 1;
     }
     else if (section == TableSectionPending) {
@@ -179,13 +173,8 @@ typedef enum {
     }
     else if (indexPath.section == TableSectionReports) {
         NSArray *reports = [self listOfReports];
-        NSLog(@"reports.count %i", reports.count);
-        NSLog(@"indexPath.row %i", indexPath.row);
-        NSLog(@"------------------");
-        if (reports.count > 1) {
-            
+        if (reports.count > 0) {
             USHReport *report = [reports objectAtIndex:indexPath.row];
-
             BOOL hasPhotos = report.photos.count > 0 || report.snapshot != nil;
             USHReportTableCell *cell = [USHTableCellFactory reportTableCellForTable:tableView indexPath:indexPath hasPhotos:hasPhotos];
             cell.titleLabel.text = report.title;
@@ -254,18 +243,7 @@ typedef enum {
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == TableSectionReports) {
-        // NUOVO -- INIZIO
-        NSMutableDictionary *flatCategorySelected = [[Ushahidi sharedInstance] flatCategorySelected];
-        for (NSString* key in flatCategorySelected) {
-            id value = [flatCategorySelected objectForKey:key];
-            if ( [value isEqualToString:@"NO"])
-            {
-                return NSLocalizedString(@"Filtered List", nil);
-            }
-        }
-        return NSLocalizedString(@"All Categories", nil);
-        // NUOVO -- FINE
-        //return self.category != nil ? self.category.title : NSLocalizedString(@"All Categories", nil);
+        return self.category != nil ? self.category.title : NSLocalizedString(@"All Categories", nil);   
     }
     else if (section == TableSectionPending && self.map.reportsPending.count > 0) {
         return NSLocalizedString(@"Pending Upload", nil);   
@@ -302,14 +280,6 @@ typedef enum {
 }
 
 - (void) searchTextDidChange:(NSString *)searchText {
-    //[self.tableView reloadData];
-    if (searchText == NULL || searchText.length == 0 )
-    {
-       //[self.tableView reloadData];
-    }
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self.tableView reloadData];
 }
 
@@ -336,12 +306,20 @@ typedef enum {
     }
 }
 
+- (void) ushahidi:(Ushahidi*)ushahidi uploaded:(USHMap*)map report:(USHReport*)report error:(NSError*)error {
+    if (error) {
+        DLog(@"Error:%@", error.localizedDescription);
+    }
+    else {
+        DLog(@"Uploaded %@ %@", report.title, report.url);
+    }
+}
+
 - (NSArray*) listOfReports {
     if ([[USHSettings sharedInstance] sortReportsByDate]) {
         return [self.map reportsWithCategory:self.category text:self.searchText sort:USHSortByDate ascending:NO];
     }
     return [self.map reportsWithCategory:self.category text:self.searchText sort:USHSortByTitle ascending:YES];
 }
-
 
 @end

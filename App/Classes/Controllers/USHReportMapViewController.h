@@ -34,5 +34,5 @@
 @property (strong, nonatomic) USHCategory *category;
 
 - (IBAction)locate:(id)sender event:(UIEvent*)event;
-- (void) refreshMap;
+
 @end
