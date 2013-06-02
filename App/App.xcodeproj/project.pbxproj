@@ -2247,7 +2247,6 @@
 		4A916814175BA11E00F7D66E /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9167F4175B9FCD00F7D66E /* Icon-iPad@2x.png */; };
 		4A916815175BA11E00F7D66E /* Icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9167F5175B9FCD00F7D66E /* Icon-iPhone.png */; };
 		4A916816175BA11E00F7D66E /* Icon-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9167F6175B9FCD00F7D66E /* Icon-iPhone@2x.png */; };
-		4A916817175BA11E00F7D66E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9167F7175B9FCD00F7D66E /* Info.plist */; };
 		4A916818175BA11E00F7D66E /* Logo-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9167F8175B9FCD00F7D66E /* Logo-iPad.png */; };
 		4A916819175BA11E00F7D66E /* Logo-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9167F9175B9FCD00F7D66E /* Logo-iPad@2x.png */; };
 		4A91681A175BA11E00F7D66E /* Logo-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A9167FA175B9FCD00F7D66E /* Logo-iPhone.png */; };
@@ -5856,7 +5855,6 @@
 				4A916814175BA11E00F7D66E /* Icon-iPad@2x.png in Resources */,
 				4A916815175BA11E00F7D66E /* Icon-iPhone.png in Resources */,
 				4A916816175BA11E00F7D66E /* Icon-iPhone@2x.png in Resources */,
-				4A916817175BA11E00F7D66E /* Info.plist in Resources */,
 				4A916818175BA11E00F7D66E /* Logo-iPad.png in Resources */,
 				4A916819175BA11E00F7D66E /* Logo-iPad@2x.png in Resources */,
 				4A91681A175BA11E00F7D66E /* Logo-iPhone.png in Resources */,
