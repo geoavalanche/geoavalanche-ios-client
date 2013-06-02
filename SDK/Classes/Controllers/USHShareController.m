@@ -554,7 +554,7 @@ typedef enum {
 #pragma mark - FBLoginViewDelegate
 
 - (BOOL) canPostFacebook {
-    return [FBSession class] != nil && [FBNativeDialogs class] != nil && [NSString isNilOrEmpty:self.defaults.facebookAppID] == NO;
+    return [FBSession class] != nil && [FBNativeDialogs class] != nil && self.defaults.facebookAppID != nil;
 }
 
 - (void) postFacebook:(NSString*)text url:(NSString*)url {

@@ -18,6 +18,12 @@
  **
  *****************************************************************************/
 
+/* MODIFICHE GEOAVALANCHE INIZIO */
+#import "USHDatabase.h"
+#import "CategoryTreeManager.h"
+/* MODIFICHE GEOAVALANCHE FINE */
+
+
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 

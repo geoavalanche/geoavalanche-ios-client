@@ -57,6 +57,15 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
 
 #pragma mark - Properties
 
+/* MODIFICHE GEOALVALANCHE INIZIO */
+@synthesize flatCategory;
+@synthesize flatCategorySelected;
+@synthesize flatOnlyCategoryYES;
+@synthesize flatCategoryToAdd; // DA VERIFICARE
+@synthesize flatCategoryToAddSelected; // DA VERIFICARE
+/* MODIFICHE GEOALVALANCHE FINE */
+
+
 @synthesize synchronize = _synchronize;
 @synthesize uploads = _uploads;
 @synthesize youtubeUsername = _youtubeUsername;
@@ -77,10 +86,30 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
         [self.uploads setMaxConcurrentOperationCount:1];
         [self.uploads addObserver:self forKeyPath:@"operations" options:NSKeyValueObservingOptionNew context:nil];
     }
+    
+    /* MODIFICHE GEOALVALANCHE INIZIO */
+    flatCategory = [[NSMutableArray alloc] init];
+    flatCategorySelected = [[NSMutableDictionary alloc] init];
+    flatOnlyCategoryYES = [[NSMutableDictionary alloc] init];
+    flatCategoryToAdd = [[NSMutableDictionary alloc] init];
+    flatCategoryToAddSelected = [[NSMutableDictionary alloc] init];
+    /* MODIFICHE GEOALVALANCHE FINE */
+
+    
     return self;
 }
 
 - (void)dealloc {
+    
+    /* MODIFICHE GEOALVALANCHE INIZIO */
+    [flatCategory release];
+    [flatCategorySelected release];
+    [flatOnlyCategoryYES release];
+    [flatCategoryToAdd release];
+    [flatCategoryToAddSelected release];
+    /* MODIFICHE GEOALVALANCHE FINE */
+
+    
     [_synchronize removeObserver:self forKeyPath:@"operations"];
     [_synchronize release];
     [_uploads removeObserver:self forKeyPath:@"operations"];
