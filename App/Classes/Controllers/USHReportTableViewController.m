@@ -34,6 +34,12 @@
 #import <Ushahidi/UIAlertView+USH.h>
 #import "USHSettings.h"
 
+// MODIFICHE GEOAVALANCHE -- INIZIO
+#import <Ushahidi/USHDatabase.h>
+#import <Ushahidi/CategoryTreeManager.h>
+#import <Ushahidi/CategoryTree.h>
+// MODIFICHE GEOAVALANCHE -- FINE
+
 @interface USHReportTableViewController ()
 
 @property (strong, nonatomic) USHMap *_map;
@@ -243,7 +249,21 @@ typedef enum {
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == TableSectionReports) {
-        return self.category != nil ? self.category.title : NSLocalizedString(@"All Categories", nil);   
+        
+        // NUOVO -- INIZIO
+        NSMutableDictionary *flatCategorySelected = [[Ushahidi sharedInstance] flatCategorySelected];
+        for (NSString* key in flatCategorySelected) {
+            id value = [flatCategorySelected objectForKey:key];
+            if ( [value isEqualToString:@"NO"])
+            {
+                return NSLocalizedString(@"Filtered List", nil);
+            }
+        }
+        return NSLocalizedString(@"All Categories", nil);
+        // NUOVO -- FINE
+
+        
+        //return self.category != nil ? self.category.title : NSLocalizedString(@"All Categories", nil);
     }
     else if (section == TableSectionPending && self.map.reportsPending.count > 0) {
         return NSLocalizedString(@"Pending Upload", nil);   

@@ -160,4 +160,21 @@
 	DLog(@"error: %@", [error localizedDescription]);
 }
 
+/* MODIFICHE GROAVALANCHE INIZIO */
+- (void) refreshMap {
+    //self._map = map;
+    [self.mapView removeAllPins];
+    for (USHReport *report in [self._map  reportsWithCategory:self.category]) {
+        [self.mapView addPinWithTitle:report.title
+                             subtitle:[report categoryTitles:@", "]
+                             latitude:[report.latitude stringValue]
+                            longitude:[report.longitude stringValue]
+                               object:report
+                             pinColor:MKPinAnnotationColorRed];
+    }
+    [self.mapView resizeRegionToFitAllPins:YES animated:NO];
+}
+/* MODIFICHE GROAVALANCHE FINE */
+
+
 @end
