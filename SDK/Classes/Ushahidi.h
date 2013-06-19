@@ -48,6 +48,7 @@
     NSMutableDictionary *flatCategoryTest;
     NSMutableDictionary *flatCategoryToAdd;
     NSMutableDictionary *flatCategoryToAddSelected;
+    NSString *refreshReport;
     /* MODIFICHE GEOALVALANCHE FINE */
 }
 
@@ -62,6 +63,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(Ushahidi);
 @property (retain) NSMutableDictionary *flatOnlyCategoryYES;
 @property (retain) NSMutableDictionary *flatCategoryToAdd;
 @property (retain) NSMutableDictionary *flatCategoryToAddSelected;
+@property (retain) NSString *refreshReport;
 /* MODIFICHE GEOALVALANCHE FINE */
 
 

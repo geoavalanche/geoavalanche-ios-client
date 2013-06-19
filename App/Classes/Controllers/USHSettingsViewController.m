@@ -31,6 +31,10 @@
 #import <Ushahidi/NSString+USH.h>
 #import <Ushahidi/USHAppDelegate.h>
 
+/* modifiche geoavalanche inizio */
+#import <Ushahidi/Ushahidi.h>
+/* modifiche geoavalanche fine */
+
 @interface USHSettingsViewController ()
 
 @property (strong, nonatomic) USHShareController *shareController;
@@ -452,6 +456,8 @@ typedef enum {
     else if (indexPath.section == TableSectionDownload) {
         if (indexPath.row == TableSectionDownloadRowCount) {
             [[USHSettings sharedInstance] setDownloadLimit:value];
+            Ushahidi *share = [Ushahidi sharedInstance];
+            share.refreshReport=@"YES";
         }
     }
 }

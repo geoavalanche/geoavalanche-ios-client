@@ -47,4 +47,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(USHDatabase);
 - (NSInteger) fetchCountForName:(NSString *)name query:(NSString*)query param:(NSString*)param;
 - (NSInteger) fetchCountForName:(NSString *)name query:(NSString*)query params:(NSString*)param, ... NS_REQUIRES_NIL_TERMINATION;
 
+
+/* MODIFICHE GEOAVALANCHE INIZIO */
+-(int) deleteAllEntities:(NSString*)model;
+/* MODIFICHE GEOAVALANCHE FINE */
+
 @end

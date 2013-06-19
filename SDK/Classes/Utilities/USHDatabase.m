@@ -291,4 +291,30 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(USHDatabase);
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+/* MODIFICHE GEOAVALANCHE INIZIO */
+-(int) deleteAllEntities:(NSString*)model{
+    int numDeleted = 0;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:model inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    [fetchRequest release];
+    
+    
+    for (NSManagedObject *managedObject in items) {
+    	[self.managedObjectContext deleteObject:managedObject];
+    	//DLog(@" object deleted ----------------------");
+    }
+    if (![self.managedObjectContext save:&error]) {
+    	DLog(@"Error deleting  - error:%@",error);
+    }
+    
+    return numDeleted;
+}
+/* MODIFICHE GEOAVALANCHE FINE */
+
+
 @end

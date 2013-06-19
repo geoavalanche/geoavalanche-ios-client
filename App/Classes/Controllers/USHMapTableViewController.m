@@ -79,6 +79,9 @@ typedef enum {
 #pragma mark - IBActions
 
 - (IBAction)edit:(id)sender event:(UIEvent*)event {
+    
+    /* MODIFICHE GEOAVALANCHER  INIZIO */
+    /*
     if (self.tableView.editing) {
         self.tableView.editing = NO;
         self.editButton.image = [UIImage imageNamed:@"edit.png"];
@@ -93,6 +96,8 @@ typedef enum {
         self.infoButton.enabled = NO;
         self.refreshButton.enabled = NO;
     }
+    */
+    /* MODIFICHE GEOAVALANCHER  FINE */
 }
 
 - (IBAction)info:(id)sender event:(UIEvent*)event {
@@ -114,12 +119,16 @@ typedef enum {
 
 - (IBAction)add:(id)sender event:(UIEvent*)event {
     DLog(@"");
+    /* MODIFICHE GEOAVALANCHER  INIZIO */
+    /*
     [UIActionSheet showWithTitle:nil
                         delegate:self
                            event:event
                              tag:ActionSheetAddMap
                           cancel:NSLocalizedString(@"Cancel", nil)
-                         buttons:self.textByUrl, self.textAroundMe, nil];    
+                         buttons:self.textByUrl, self.textAroundMe, nil];
+     */
+    /* MODIFICHE GEOAVALANCHER  FINE */
 }
 
 #pragma mark - Handlers
@@ -188,6 +197,20 @@ typedef enum {
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    /* MODIFICHE GEOAVALANCHE INIZIO */
+    NSString *refresh = [[Ushahidi sharedInstance] refreshReport];
+    
+    if ( [refresh isEqualToString:@"YES"] )
+    {
+        int delete = [[USHDatabase sharedInstance] deleteAllEntities:(NSString*)@"Report"];
+        DLog("DELETED REPORT %i", delete);
+        delete = [[USHDatabase sharedInstance] deleteAllEntities:(NSString*)@"Category"];
+        DLog("DELETED CATEGORY %i", delete);
+        [self startRefreshControl];
+        Ushahidi *share = [Ushahidi sharedInstance];
+        share.refreshReport = @"NO";
+    }
+    /* MODIFICHE GEOAVALANCHE FINE */
     [self.tableView reloadData];
 }
 

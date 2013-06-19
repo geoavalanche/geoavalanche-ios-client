@@ -63,6 +63,7 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
 @synthesize flatOnlyCategoryYES;
 @synthesize flatCategoryToAdd; // DA VERIFICARE
 @synthesize flatCategoryToAddSelected; // DA VERIFICARE
+@synthesize refreshReport;
 /* MODIFICHE GEOALVALANCHE FINE */
 
 
@@ -93,9 +94,9 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
     flatOnlyCategoryYES = [[NSMutableDictionary alloc] init];
     flatCategoryToAdd = [[NSMutableDictionary alloc] init];
     flatCategoryToAddSelected = [[NSMutableDictionary alloc] init];
+    [refreshReport initWithString:@"NO"];
     /* MODIFICHE GEOALVALANCHE FINE */
 
-    
     return self;
 }
 
@@ -107,6 +108,7 @@ NSString * const kUSHSyncDate = @"USHSyncDate";
     [flatOnlyCategoryYES release];
     [flatCategoryToAdd release];
     [flatCategoryToAddSelected release];
+    [refreshReport release];
     /* MODIFICHE GEOALVALANCHE FINE */
 
     
