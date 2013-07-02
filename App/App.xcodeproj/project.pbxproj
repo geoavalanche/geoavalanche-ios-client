@@ -1972,23 +1972,6 @@
 		3EFF5B021620E64B0072FAE1 /* verified@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFF5AFE1620E64B0072FAE1 /* verified@2x.png */; };
 		3EFF5B051620E9740072FAE1 /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFF5B031620E9740072FAE1 /* locate.png */; };
 		3EFF5B061620E9740072FAE1 /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFF5B041620E9740072FAE1 /* locate@2x.png */; };
-		4A62907B178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A62907C178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A62907D178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A62907E178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A62907F178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A629080178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A629081178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A629082178363390036D6E7 /* Ushahidi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62907A178363390036D6E7 /* Ushahidi.framework */; };
-		4A629084178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A629085178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A629086178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A629087178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A629088178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A629089178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A62908A178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A62908B178363670036D6E7 /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A629083178363670036D6E7 /* MapBox.framework */; };
-		4A62908D178364160036D6E7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A62908C178364160036D6E7 /* libz.dylib */; };
 		4A9166C9175B9FA300F7D66E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6D0346159B55C000CDB5B7 /* main.m */; };
 		4A9166CA175B9FA300F7D66E /* USHMapTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6D036B159B663100CDB5B7 /* USHMapTableViewController.m */; };
 		4A9166CB175B9FA300F7D66E /* USHMapTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9B26CD15DD4869004CB8EE /* USHMapTableCell.m */; };
@@ -2770,9 +2753,6 @@
 		3EFF5AFE1620E64B0072FAE1 /* verified@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verified@2x.png"; sourceTree = "<group>"; };
 		3EFF5B031620E9740072FAE1 /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
 		3EFF5B041620E9740072FAE1 /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate@2x.png"; sourceTree = "<group>"; };
-		4A62907A178363390036D6E7 /* Ushahidi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ushahidi.framework; path = ../Ushahidi.framework; sourceTree = "<group>"; };
-		4A629083178363670036D6E7 /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = ../MapBox.framework; sourceTree = "<group>"; };
-		4A62908C178364160036D6E7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4A9167E9175B9FA300F7D66E /* Geoavalanche.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geoavalanche.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A9167EE175B9FCD00F7D66E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4A9167EF175B9FCD00F7D66E /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
@@ -2830,8 +2810,6 @@
 				3EA23637159B92B50072A60D /* QuartzCore.framework in Frameworks */,
 				3EA23638159B92B50072A60D /* Security.framework in Frameworks */,
 				3EA23639159B92B50072A60D /* SystemConfiguration.framework in Frameworks */,
-				4A62907B178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A629084178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2858,8 +2836,6 @@
 				3E9E502B167129320095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E502C167129320095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E502D167129320095F4A4 /* CoreGraphics.framework in Frameworks */,
-				4A62907D178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A629086178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2886,8 +2862,6 @@
 				3E9E517F167129350095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E5180167129350095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E5181167129350095F4A4 /* CoreGraphics.framework in Frameworks */,
-				4A62907F178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A629088178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2914,8 +2888,6 @@
 				3E9E52D3167129380095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E52D4167129380095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E52D5167129380095F4A4 /* CoreGraphics.framework in Frameworks */,
-				4A629080178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A629089178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2942,8 +2914,6 @@
 				3E9E5427167129530095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E5428167129530095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E5429167129530095F4A4 /* CoreGraphics.framework in Frameworks */,
-				4A62907E178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A629087178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2970,8 +2940,6 @@
 				3E9E577616712E5A0095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E577716712E5A0095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E577816712E5A0095F4A4 /* CoreGraphics.framework in Frameworks */,
-				4A62907C178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A629085178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2998,8 +2966,6 @@
 				3EC1B4AB1757AB1000CFF726 /* QuartzCore.framework in Frameworks */,
 				3EC1B4AC1757AB1000CFF726 /* Security.framework in Frameworks */,
 				3EC1B4AD1757AB1000CFF726 /* SystemConfiguration.framework in Frameworks */,
-				4A629081178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A62908A178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3007,8 +2973,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A62908D178364160036D6E7 /* libz.dylib in Frameworks */,
-				4A9166F7175B9FA300F7D66E /* CoreLocation.framework in Frameworks */,
 				4A9166EC175B9FA300F7D66E /* libsqlite3.0.dylib in Frameworks */,
 				4A9166ED175B9FA300F7D66E /* FacebookSDK.framework in Frameworks */,
 				4A9166EE175B9FA300F7D66E /* Twitter.framework in Frameworks */,
@@ -3020,6 +2984,7 @@
 				4A9166F4175B9FA300F7D66E /* Foundation.framework in Frameworks */,
 				4A9166F5175B9FA300F7D66E /* CoreGraphics.framework in Frameworks */,
 				4A9166F6175B9FA300F7D66E /* CoreData.framework in Frameworks */,
+				4A9166F7175B9FA300F7D66E /* CoreLocation.framework in Frameworks */,
 				4A9166F8175B9FA300F7D66E /* CoreFoundation.framework in Frameworks */,
 				4A9166F9175B9FA300F7D66E /* MobileCoreServices.framework in Frameworks */,
 				4A9166FA175B9FA300F7D66E /* MapKit.framework in Frameworks */,
@@ -3027,8 +2992,6 @@
 				4A9166FC175B9FA300F7D66E /* QuartzCore.framework in Frameworks */,
 				4A9166FD175B9FA300F7D66E /* Security.framework in Frameworks */,
 				4A9166FE175B9FA300F7D66E /* SystemConfiguration.framework in Frameworks */,
-				4A629082178363390036D6E7 /* Ushahidi.framework in Frameworks */,
-				4A62908B178363670036D6E7 /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3103,7 +3066,6 @@
 		3E6D0317159B54CF00CDB5B7 = {
 			isa = PBXGroup;
 			children = (
-				4A62908C178364160036D6E7 /* libz.dylib */,
 				3E6D0350159B561900CDB5B7 /* Themes */,
 				3E6D033D159B54EF00CDB5B7 /* Resources */,
 				3E6D0343159B558400CDB5B7 /* Classes */,
@@ -3132,8 +3094,6 @@
 		3E6D0325159B54CF00CDB5B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4A629083178363670036D6E7 /* MapBox.framework */,
-				4A62907A178363390036D6E7 /* Ushahidi.framework */,
 				3E5CA9F6164710430065AF67 /* libsqlite3.0.dylib */,
 				3EA29937159CF51B00AC6AF2 /* Ushahidi.framework */,
 				3E9E4DA3167005DC0095F4A4 /* FacebookSDK.framework */,
@@ -6458,7 +6418,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6480,7 +6439,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6502,7 +6460,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6524,7 +6481,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6546,7 +6502,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6568,7 +6523,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6590,7 +6544,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6612,7 +6565,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6634,7 +6586,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6657,7 +6608,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6680,7 +6630,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6702,7 +6651,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6724,7 +6672,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6746,7 +6693,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6768,7 +6714,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
@@ -6790,7 +6735,6 @@
 					"\"$(SRCROOT)/..\"",
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/../SDK/Libraries/Facebook\"",
-					"\"$(SRCROOT)/../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other/App-Prefix.pch";
