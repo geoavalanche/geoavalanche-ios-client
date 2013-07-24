@@ -2333,6 +2333,23 @@
 		4ABC176F175BD13D00BE6CD4 /* MDTreeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABC1761175BD13D00BE6CD4 /* MDTreeViewCell.xib */; };
 		4ABC1770175BD13D00BE6CD4 /* MDTreeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABC1761175BD13D00BE6CD4 /* MDTreeViewCell.xib */; };
 		4ABC1771175BD13D00BE6CD4 /* MDTreeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABC1761175BD13D00BE6CD4 /* MDTreeViewCell.xib */; };
+		4AD6A0CF17A05C790061B34A /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4AD6A0CE17A05C790061B34A /* MapBox.bundle */; };
+		4AD6A0D117A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0D217A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0D317A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0D417A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0D517A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0D617A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0D717A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0D817A05D140061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D017A05D140061B34A /* MapBox.framework */; };
+		4AD6A0DA17A0615C0061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
+		4AD6A0DB17A061F70061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
+		4AD6A0DC17A061F70061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
+		4AD6A0DD17A061F80061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
+		4AD6A0DE17A061F90061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
+		4AD6A0DF17A061F90061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
+		4AD6A0E017A061FA0061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
+		4AD6A0E117A061FA0061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0D917A0615C0061B34A /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2784,6 +2801,9 @@
 		4ABC174F175BD12A00BE6CD4 /* checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unchecked.png; sourceTree = "<group>"; };
 		4ABC1760175BD13D00BE6CD4 /* MDTreeAddViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDTreeAddViewCell.xib; sourceTree = "<group>"; };
 		4ABC1761175BD13D00BE6CD4 /* MDTreeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDTreeViewCell.xib; sourceTree = "<group>"; };
+		4AD6A0CE17A05C790061B34A /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MapBox.bundle; path = ../../MapBox.framework/Versions/A/Resources/MapBox.bundle; sourceTree = "<group>"; };
+		4AD6A0D017A05D140061B34A /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = ../MapBox.framework; sourceTree = "<group>"; };
+		4AD6A0D917A0615C0061B34A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2810,6 +2830,8 @@
 				3EA23637159B92B50072A60D /* QuartzCore.framework in Frameworks */,
 				3EA23638159B92B50072A60D /* Security.framework in Frameworks */,
 				3EA23639159B92B50072A60D /* SystemConfiguration.framework in Frameworks */,
+				4AD6A0D117A05D140061B34A /* MapBox.framework in Frameworks */,
+				4AD6A0E117A061FA0061B34A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2836,6 +2858,8 @@
 				3E9E502B167129320095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E502C167129320095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E502D167129320095F4A4 /* CoreGraphics.framework in Frameworks */,
+				4AD6A0D317A05D140061B34A /* MapBox.framework in Frameworks */,
+				4AD6A0DF17A061F90061B34A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2862,6 +2886,8 @@
 				3E9E517F167129350095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E5180167129350095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E5181167129350095F4A4 /* CoreGraphics.framework in Frameworks */,
+				4AD6A0D517A05D140061B34A /* MapBox.framework in Frameworks */,
+				4AD6A0DD17A061F80061B34A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2888,6 +2914,8 @@
 				3E9E52D3167129380095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E52D4167129380095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E52D5167129380095F4A4 /* CoreGraphics.framework in Frameworks */,
+				4AD6A0D617A05D140061B34A /* MapBox.framework in Frameworks */,
+				4AD6A0DC17A061F70061B34A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2914,6 +2942,8 @@
 				3E9E5427167129530095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E5428167129530095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E5429167129530095F4A4 /* CoreGraphics.framework in Frameworks */,
+				4AD6A0D417A05D140061B34A /* MapBox.framework in Frameworks */,
+				4AD6A0DE17A061F90061B34A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2940,6 +2970,8 @@
 				3E9E577616712E5A0095F4A4 /* UIKit.framework in Frameworks */,
 				3E9E577716712E5A0095F4A4 /* Foundation.framework in Frameworks */,
 				3E9E577816712E5A0095F4A4 /* CoreGraphics.framework in Frameworks */,
+				4AD6A0D217A05D140061B34A /* MapBox.framework in Frameworks */,
+				4AD6A0E017A061FA0061B34A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2966,6 +2998,8 @@
 				3EC1B4AB1757AB1000CFF726 /* QuartzCore.framework in Frameworks */,
 				3EC1B4AC1757AB1000CFF726 /* Security.framework in Frameworks */,
 				3EC1B4AD1757AB1000CFF726 /* SystemConfiguration.framework in Frameworks */,
+				4AD6A0D717A05D140061B34A /* MapBox.framework in Frameworks */,
+				4AD6A0DB17A061F70061B34A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2973,6 +3007,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD6A0DA17A0615C0061B34A /* libz.dylib in Frameworks */,
+				4A9166F7175B9FA300F7D66E /* CoreLocation.framework in Frameworks */,
 				4A9166EC175B9FA300F7D66E /* libsqlite3.0.dylib in Frameworks */,
 				4A9166ED175B9FA300F7D66E /* FacebookSDK.framework in Frameworks */,
 				4A9166EE175B9FA300F7D66E /* Twitter.framework in Frameworks */,
@@ -2984,7 +3020,6 @@
 				4A9166F4175B9FA300F7D66E /* Foundation.framework in Frameworks */,
 				4A9166F5175B9FA300F7D66E /* CoreGraphics.framework in Frameworks */,
 				4A9166F6175B9FA300F7D66E /* CoreData.framework in Frameworks */,
-				4A9166F7175B9FA300F7D66E /* CoreLocation.framework in Frameworks */,
 				4A9166F8175B9FA300F7D66E /* CoreFoundation.framework in Frameworks */,
 				4A9166F9175B9FA300F7D66E /* MobileCoreServices.framework in Frameworks */,
 				4A9166FA175B9FA300F7D66E /* MapKit.framework in Frameworks */,
@@ -2992,6 +3027,7 @@
 				4A9166FC175B9FA300F7D66E /* QuartzCore.framework in Frameworks */,
 				4A9166FD175B9FA300F7D66E /* Security.framework in Frameworks */,
 				4A9166FE175B9FA300F7D66E /* SystemConfiguration.framework in Frameworks */,
+				4AD6A0D817A05D140061B34A /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3094,7 +3130,9 @@
 		3E6D0325159B54CF00CDB5B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4AD6A0D917A0615C0061B34A /* libz.dylib */,
 				3E5CA9F6164710430065AF67 /* libsqlite3.0.dylib */,
+				4AD6A0D017A05D140061B34A /* MapBox.framework */,
 				3EA29937159CF51B00AC6AF2 /* Ushahidi.framework */,
 				3E9E4DA3167005DC0095F4A4 /* FacebookSDK.framework */,
 				3EB0D714165C04DF0092DFC8 /* MobileCoreServices.framework */,
@@ -3120,6 +3158,7 @@
 		3E6D033D159B54EF00CDB5B7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4AD6A0CE17A05C790061B34A /* MapBox.bundle */,
 				3E971B1F15A36662005EB625 /* Ushahidi.bundle */,
 				3E6D0340159B552600CDB5B7 /* Localizations */,
 				3E97572C161F7D980072C3BD /* Views */,
@@ -4184,6 +4223,7 @@
 				4ABC1758175BD12A00BE6CD4 /* checkbox_unchecked.png in Resources */,
 				4ABC1762175BD13D00BE6CD4 /* MDTreeAddViewCell.xib in Resources */,
 				4ABC176A175BD13D00BE6CD4 /* MDTreeViewCell.xib in Resources */,
+				4AD6A0CF17A05C790061B34A /* MapBox.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

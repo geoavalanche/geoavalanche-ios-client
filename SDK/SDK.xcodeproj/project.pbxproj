@@ -392,6 +392,10 @@
 		4A66C5B7175567C200F4D2CF /* CategoryTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A66C5B6175567C200F4D2CF /* CategoryTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4A66C5B8175567C200F4D2CF /* CategoryTree.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 4A66C5B6175567C200F4D2CF /* CategoryTree.h */; };
 		4A66C5B91755682B00F4D2CF /* USHDatabase.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3E971B3515A37D08005EB625 /* USHDatabase.h */; };
+		4AD6A0C717A05B420061B34A /* MapBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0C617A05B420061B34A /* MapBox.framework */; };
+		4AD6A0C917A05BDA0061B34A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0C817A05BDA0061B34A /* CoreLocation.framework */; };
+		4AD6A0CB17A05BE70061B34A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0CA17A05BE70061B34A /* QuartzCore.framework */; };
+		4AD6A0CD17A05BFE0061B34A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD6A0CC17A05BFE0061B34A /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -788,6 +792,10 @@
 		4A66C5A7175566DE00F4D2CF /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_checked.png; sourceTree = "<group>"; };
 		4A66C5A8175566DE00F4D2CF /* checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unchecked.png; sourceTree = "<group>"; };
 		4A66C5B6175567C200F4D2CF /* CategoryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTree.h; sourceTree = "<group>"; };
+		4AD6A0C617A05B420061B34A /* MapBox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapBox.framework; path = ../MapBox.framework; sourceTree = "<group>"; };
+		4AD6A0C817A05BDA0061B34A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4AD6A0CA17A05BE70061B34A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4AD6A0CC17A05BFE0061B34A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -803,6 +811,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD6A0CD17A05BFE0061B34A /* libz.dylib in Frameworks */,
+				4AD6A0CB17A05BE70061B34A /* QuartzCore.framework in Frameworks */,
+				4AD6A0C917A05BDA0061B34A /* CoreLocation.framework in Frameworks */,
 				3E9E4D9F1670030B0095F4A4 /* libsqlite3.0.dylib in Frameworks */,
 				3E9E4D9D167002F90095F4A4 /* CoreGraphics.framework in Frameworks */,
 				3E9E4D9B167002ED0095F4A4 /* Accounts.framework in Frameworks */,
@@ -814,6 +825,7 @@
 				3EA23681159B9CD30072A60D /* UIKit.framework in Frameworks */,
 				3EA2367D159B9C4D0072A60D /* CoreData.framework in Frameworks */,
 				3EA2CFE515926A19004E283B /* Foundation.framework in Frameworks */,
+				4AD6A0C717A05B420061B34A /* MapBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1225,7 @@
 		3EA2CFD615926A19004E283B = {
 			isa = PBXGroup;
 			children = (
+				4AD6A0CC17A05BFE0061B34A /* libz.dylib */,
 				3E9431EE159A9C6300864D11 /* Resources */,
 				3EA235D8159B90450072A60D /* Classes */,
 				3E943115159A249100864D11 /* Other */,
@@ -1234,6 +1247,9 @@
 		3EA2CFE315926A19004E283B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4AD6A0C817A05BDA0061B34A /* CoreLocation.framework */,
+				4AD6A0CA17A05BE70061B34A /* QuartzCore.framework */,
+				4AD6A0C617A05B420061B34A /* MapBox.framework */,
 				3E9E4D9E1670030B0095F4A4 /* libsqlite3.0.dylib */,
 				3E9E4D9C167002F90095F4A4 /* CoreGraphics.framework */,
 				3E9E4D9A167002ED0095F4A4 /* Accounts.framework */,
@@ -2039,6 +2055,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/Facebook\"",
+					"\"$(SRCROOT)/..\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_THUMB_SUPPORT = NO;
@@ -2098,6 +2115,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/Facebook\"",
+					"\"$(SRCROOT)/..\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_THUMB_SUPPORT = NO;

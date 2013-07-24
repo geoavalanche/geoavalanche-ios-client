@@ -30,25 +30,6 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-//  This source supports both tiles from MapBox Hosting as well as the open source,
-//  self-hosted TileStream software.
-//
-//  When initializing an instance, pass in valid TileJSON[1] as returned by
-//  the MapBox Hosting API[2] or TileStream software[3].
-//
-//  Also supports simplestyle[4] data for TileJSON 2.1.0+[5].
-//
-//  Example app at https://github.com/mapbox/mapbox-ios-example
-//
-//  [1] https://github.com/mapbox/tilejson-spec
-//  [2] http://mapbox.com/hosting/api/
-//  [3] https://github.com/mapbox/tilestream
-//  [4] https://github.com/mapbox/simplestyle-spec
-//  [5] https://github.com/mapbox/tilejson-spec/tree/v2.1.0/
-//
-//  This class also supports initialization via the deprecated info dictionary
-//  for backwards compatibility and for iOS < 5.0 where JSON serialization isn't
-//  built into the SDK. Its use is discouraged.
 
 #import "RMAbstractWebMapSource.h"
 
@@ -58,35 +39,126 @@
 #define kMapBoxDefaultLatLonBoundingBox ((RMSphericalTrapezium){ .northEast = { .latitude =  90, .longitude =  180 }, \
                                                                  .southWest = { .latitude = -90, .longitude = -180 } })
 
+#define kMapBoxPlaceholderNormalMapID @"examples.map-z2effxa8"
+#define kMapBoxPlaceholderRetinaMapID @"examples.map-zswgei2n"
+
+// constants for the image quality API (see http://mapbox.com/developers/api/#image_quality)
+typedef enum : NSUInteger {
+    RMMapBoxSourceQualityFull   = 0, // default
+    RMMapBoxSourceQualityPNG32  = 1, // 32 color indexed PNG
+    RMMapBoxSourceQualityPNG64  = 2, // 64 color indexed PNG
+    RMMapBoxSourceQualityPNG128 = 3, // 128 color indexed PNG
+    RMMapBoxSourceQualityPNG256 = 4, // 256 color indexed PNG
+    RMMapBoxSourceQualityJPEG70 = 5, // 70% quality JPEG
+    RMMapBoxSourceQualityJPEG80 = 6, // 80% quality JPEG
+    RMMapBoxSourceQualityJPEG90 = 7  // 90% quality JPEG
+} RMMapBoxSourceQuality;
+
 @class RMMapView;
 
+/** An RMMapBoxSource is used to display map tiles from a network-based map hosted on [MapBox](http://mapbox.com/plans) or the open source [TileStream](https://github.com/mapbox/tilestream) software. Maps are referenced by their MapBox map ID or by a file or URL containing [TileJSON](http://mapbox.com/developers/tilejson/). */
 @interface RMMapBoxSource : RMAbstractWebMapSource
 
-// Designated initializer. Point to either a remote TileJSON spec or a local TileJSON or property list.
+/** @name Creating Tile Sources */
+
+/** Initialize a tile source using the MapBox map ID.
+*
+*   This method requires a network connection in order to download the TileJSON used to define the tile source. 
+*
+*   @param mapID The MapBox map ID string, typically in the format `<username>.map-<random characters>`.
+*   @return An initialized MapBox tile source. */
+- (id)initWithMapID:(NSString *)mapID;
+
+/** Initialize a tile source using the MapBox map ID, optionally enabling SSL.
+*
+*   This method requires a network connection in order to download the TileJSON used to define the tile source.
+*
+*   @param mapID The MapBox map ID string, typically in the format `<username>.map-<random characters>`.
+*   @param enableSSL Whether to use SSL-enabled HTTPS connections for map tiles and other related data. Defaults to `NO`. At some point in the future, this will default to `YES`. 
+*   @return An initialized MapBox tile source. */
+- (id)initWithMapID:(NSString *)mapID enablingSSL:(BOOL)enableSSL;
+
+/** Initialize a tile source with either a remote or local TileJSON structure.
+*
+*   Passing a remote URL requires a network connection. If offline functionality is desired, you should cache the TileJSON locally at a prior date, then pass a file path URL to this method.
+*
+*   @see tileJSON
+*
+*   @param referenceURL A remote or file path URL pointing to a TileJSON structure.
+*   @return An initialized MapBox tile source. */
 - (id)initWithReferenceURL:(NSURL *)referenceURL;
 
-// Initialize source with TileJSON.
+/** Initialize a tile source with TileJSON.
+*   @param tileJSON A string containing TileJSON. 
+*   @return An initialized MapBox tile source. */
 - (id)initWithTileJSON:(NSString *)tileJSON;
 
-// For TileJSON 2.1.0+ layers, look for and auto-add annotations from simplestyle data.
+/** For TileJSON 2.1.0+ layers, initialize a tile source and automatically find and add annotations from [simplestyle](http://mapbox.com/developers/simplestyle/) data.
+*
+*   This method requires a network connection in order to download the TileJSON used to define the tile source.
+*
+*   @param mapID The MapBox map ID string, typically in the format `<username>.map-<random characters>`.
+*   @param mapView A map view on which to display the annotations.
+*   @return An initialized MapBox tile source. */
+- (id)initWithMapID:(NSString *)mapID enablingDataOnMapView:(RMMapView *)mapView;
+
+/** For TileJSON 2.1.0+ layers, initialize a tile source and automatically find and add annotations from [simplestyle](http://mapbox.com/developers/simplestyle/) data, optionally enabling SSL.
+*
+*   This method requires a network connection in order to download the TileJSON used to define the tile source.
+*
+*   @param mapID The MapBox map ID string, typically in the format `<username>.map-<random characters>`.
+*   @param mapView A map view on which to display the annotations.
+*   @param enableSSL Whether to use SSL-enabled HTTPS connections for map tiles and other related data. Defaults to `NO`. At some point in the future, this will default to `YES`.
+*   @return An initialized MapBox tile source. */
+- (id)initWithMapID:(NSString *)mapID enablingDataOnMapView:(RMMapView *)mapView enablingSSL:(BOOL)enableSSL;
+
+/** For TileJSON 2.1.0+ layers, initialize a tile source and automatically find and add annotations from [simplestyle](http://mapbox.com/developers/simplestyle/) data.
+*   @param tileJSON A string containing TileJSON.
+*   @param mapView A map view on which to display the annotations. 
+*   @return An initialized MapBox tile source. */
 - (id)initWithTileJSON:(NSString *)tileJSON enablingDataOnMapView:(RMMapView *)mapView;
+
+/** For TileJSON 2.1.0+ layers, initialize a tile source and automatically find and add annotations from [simplestyle](http://mapbox.com/developers/simplestyle/) data.
+*
+*   Passing a remote URL requires a network connection. If offline functionality is desired, you should cache the TileJSON locally at a prior date, then pass a file path URL to this method.
+*
+*   @see tileJSON
+*
+*   @param referenceURL A remote or file path URL pointing to a TileJSON structure.
+*   @param mapView A map view on which to display the annotations.
+*   @return An initialized MapBox tile source. */
 - (id)initWithReferenceURL:(NSURL *)referenceURL enablingDataOnMapView:(RMMapView *)mapView;
 
-// Initialize source with properly list (deprecated; use TileJSON).
-- (id)initWithInfo:(NSDictionary *)info __attribute__ ((deprecated));
+/** @name Querying Tile Source Information */
 
-// HTML-formatted legend for this source, if any
+/** Any available HTML-formatted map legend data for the tile source, suitable for display in a UIWebView. */
 - (NSString *)legend;
 
-// Suggested starting center coordinate
+/** A suggested starting center coordinate for the map layer. */
 - (CLLocationCoordinate2D)centerCoordinate;
 
-// Suggested starting center zoom
+/** A suggested starting center zoom level for the map layer. */
 - (float)centerZoom;
 
-// Regional or global coverage?
+/** Returns `YES` if the tile source provides full-world coverage; otherwise, returns `NO`. */
 - (BOOL)coversFullWorld;
 
-@property (nonatomic, readonly, retain) NSDictionary *infoDictionary;
+/** The TileJSON for the map layer. Useful for saving locally to use in instantiating a tile source while offline. */
+@property (nonatomic, readonly, strong) NSString *tileJSON;
+
+/** The TileJSON URL for the map layer. Useful for retrieving TileJSON to save locally to use in instantiating a tile source while offline. */
+@property (nonatomic, readonly, strong) NSURL *tileJSONURL;
+
+/** The TileJSON data in dictionary format. Useful for retrieving info about the layer without having to parse TileJSON. */
+@property (nonatomic, readonly, strong) NSDictionary *infoDictionary;
+
+/** @name Configuring Map Options */
+
+/** Image quality that is retrieved from the network. Useful for lower-bandwidth environments. The default is to provide full-quality imagery. 
+*
+*   Note that you may want to clear the tile cache after changing this value in order to provide a consistent experience. */
+@property (nonatomic, assign) RMMapBoxSourceQuality imageQuality;
+
+@property (nonatomic, readonly, assign) dispatch_queue_t dataQueue;
 
 @end

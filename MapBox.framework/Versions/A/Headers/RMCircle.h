@@ -1,7 +1,7 @@
 //
 //  RMCircle.h
 //
-// Copyright (c) 2008-2010, Route-Me Contributors
+// Copyright (c) 2008-2013, Route-Me Contributors
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@
 
 @class RMMapView;
 
+/** An RMCircle is used to represent a perfect circle shape on a map view. An RMCircle changes visible size in response to map zooms in order to consistently represent coverage of the same geographic area. */
 @interface RMCircle : RMMapLayer
 {
 	RMMapView *mapView;
@@ -45,12 +46,31 @@
 	CGMutablePathRef circlePath;
 }
 
-@property (nonatomic, retain) CAShapeLayer *shapeLayer;
-@property (nonatomic, retain) UIColor *lineColor;
-@property (nonatomic, retain) UIColor *fillColor;
+/** @name Accessing Drawing Properties */
+
+/** The circle's underlying shape layer. */
+@property (nonatomic, strong) CAShapeLayer *shapeLayer;
+
+/** The circle's line color. Defaults to black. */
+@property (nonatomic, strong) UIColor *lineColor;
+
+/** The circle's fill color. Defaults to blue. */
+@property (nonatomic, strong) UIColor *fillColor;
+
+/** The fill pattern image of the circle. If set, the fillColor is set to `nil`. */
+@property (nonatomic, strong) UIImage *fillPatternImage;
+
+/** The radius of the circle in projected meters. Regardless of map zoom, the circle will change visible size to continously represent this radius on the map. */
 @property (nonatomic, assign) CGFloat radiusInMeters;
+
+/** The circle's line width. Defaults to 10.0. */
 @property (nonatomic, assign) CGFloat lineWidthInPixels;
 
+/** @name Creating Circle Objects */
+
+/** Initializes and returns a newly allocated RMCircle for the specified map view.
+*   @param aMapView The map view the shape should be drawn on.
+*   @param newRadiusInMeters The radius of the circle object in projected meters. Regardless of map zoom, the circle will change visible size to continously represent this radius on the map. */
 - (id)initWithView:(RMMapView *)aMapView radiusInMeters:(CGFloat)newRadiusInMeters;
 
 @end

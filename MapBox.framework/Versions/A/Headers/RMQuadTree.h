@@ -2,9 +2,29 @@
 //  RMQuadTree.h
 //  MapView
 //
-//  Created by Thomas Rasch on 27.07.11.
-//  Copyright 2011 Alpstein. All rights reserved.
+// Copyright (c) 2008-2013, Route-Me Contributors
+// All rights reserved.
 //
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//
+// * Redistributions of source code must retain the above copyright notice, this
+//   list of conditions and the following disclaimer.
+// * Redistributions in binary form must reproduce the above copyright notice,
+//   this list of conditions and the following disclaimer in the documentation
+//   and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
 
 #import "RMFoundation.h"
 
@@ -15,25 +35,11 @@ typedef enum : short {
     nodeTypeNode
 } RMQuadTreeNodeType;
 
-#define kRMClusterAnnotationTypeName @"RMClusterAnnotation"
-
-#pragma mark -
-#pragma mark RMQuadTree nodes
+#pragma mark - RMQuadTree nodes
 
 @interface RMQuadTreeNode : NSObject
-{
-    RMProjectedRect boundingBox, northWestBoundingBox, northEastBoundingBox, southWestBoundingBox, southEastBoundingBox;
-    NSMutableArray *annotations;
-    RMQuadTreeNode *parentNode, *northWest, *northEast, *southWest, *southEast;
-    RMQuadTreeNodeType nodeType;
-    RMMapView *mapView;
 
-    RMAnnotation *cachedClusterAnnotation;
-    NSArray *cachedClusterEnclosedAnnotations;
-    NSMutableArray *cachedEnclosedAnnotations, *cachedUnclusteredAnnotations;
-}
-
-@property (nonatomic, readonly) NSArray *annotations;
+@property (nonatomic, weak, readonly) NSArray *annotations;
 @property (nonatomic, readonly) RMQuadTreeNodeType nodeType;
 
 @property (nonatomic, readonly) RMProjectedRect boundingBox;
@@ -48,29 +54,26 @@ typedef enum : short {
 @property (nonatomic, readonly) RMQuadTreeNode *southWest;
 @property (nonatomic, readonly) RMQuadTreeNode *southEast;
 
-@property (nonatomic, readonly) RMAnnotation *clusterAnnotation;
-@property (nonatomic, readonly) NSArray *clusteredAnnotations;
+@property (nonatomic, weak, readonly) RMAnnotation *clusterAnnotation;
+@property (nonatomic, weak, readonly) NSArray *clusteredAnnotations;
 
 // Operations on this node and all subnodes
-@property (nonatomic, readonly) NSArray *enclosedAnnotations;
-@property (nonatomic, readonly) NSArray *unclusteredAnnotations;
+@property (nonatomic, weak, readonly) NSArray *enclosedAnnotations;
+@property (nonatomic, weak, readonly) NSArray *unclusteredAnnotations;
 
 @end
 
-#pragma mark -
-#pragma mark RMQuadTree
+#pragma mark - RMQuadTree
 
 @interface RMQuadTree : NSObject
-{
-    RMQuadTreeNode *rootNode;
-    RMMapView *mapView;
-}
 
 - (id)initWithMapView:(RMMapView *)aMapView;
 
 - (void)addAnnotation:(RMAnnotation *)annotation;
 - (void)addAnnotations:(NSArray *)annotations;
 - (void)removeAnnotation:(RMAnnotation *)annotation;
+
+- (void)removeAllObjects;
 
 // Returns all annotations that are either inside of or intersect with boundingBox
 - (NSArray *)annotationsInProjectedRect:(RMProjectedRect)boundingBox;
